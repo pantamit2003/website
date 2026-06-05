@@ -425,6 +425,36 @@
       .process-steps { grid-template-columns:1fr; }
       .why-pbi-stat-grid { grid-template-columns:1fr; }
     }
+    .ticker-wrap{
+        background:#081120;
+        overflow:hidden;
+        border-top:1px solid rgba(255,255,255,.08);
+        border-bottom:1px solid rgba(255,255,255,.08);
+        padding:14px 0;
+    }
+
+    .ticker-track{
+        display:flex;
+        width:max-content;
+        animation:tickerMove 30s linear infinite;
+    }
+
+    .ticker-item{
+        color:#cbd5e1;
+        font-size:14px;
+        font-weight:600;
+        white-space:nowrap;
+        margin-right:50px;
+    }
+
+    @keyframes tickerMove{
+        from{
+            transform:translateX(0);
+        }
+        to{
+            transform:translateX(-50%);
+        }
+    }
   </style>
 
   <!-- Schema.org Structured Data -->
@@ -565,6 +595,34 @@
     </div>
   </div>
 </section>
+
+<!-- ══════════ TICKER ══════════ -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track" id="ticker">
+    <span class="ticker-item"><span class="ticker-dot"></span> VBA Macro Development</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Power Query Automation</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Excel Dashboard Development</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Reporting Automation</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Inventory Tracking Systems</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> MIS Reporting Automation</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Data Cleaning &amp; Transformation</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Sales Tracking Automation</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Workflow Automation</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Business Process Automation</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Excel Automation India</span>
+    <!-- Duplicate for seamless loop -->
+    <span class="ticker-item"><span class="ticker-dot"></span> VBA Macro Development</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Power Query Automation</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Excel Dashboard Development</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Reporting Automation</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Inventory Tracking Systems</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> MIS Reporting Automation</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Data Cleaning &amp; Transformation</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Sales Tracking Automation</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Workflow Automation</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Business Process Automation</span>
+  </div>
+</div>
 
 <!-- ══════════════════ TRUST BAR ══════════════════ -->
 <div class="trust-section" aria-label="Technologies and tools">
