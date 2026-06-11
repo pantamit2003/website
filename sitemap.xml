@@ -43,9 +43,16 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://qythera.co.in/blog/inventory-dashboard-kpis.html</loc>
+    <loc>https://qythera.co.in/blogs/inventory-dashboard-kpis.html</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+  <loc>https://qythera.co.in/blogs/reporting-automation-guide.html</loc>
+  <lastmod>2026-06-11</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.7</priority>
+</url>
+
 </urlset>
