@@ -72,5 +72,11 @@
   <changefreq>monthly</changefreq>
   <priority>0.7</priority>
 </url>
+  <url>
+  <loc>https://qythera.co.in/blogs/how-to-automate-reporting-processes.html</loc>
+  <lastmod>2026-06-15</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.7</priority>
+</url>
 
 </urlset>
