@@ -211,7 +211,7 @@
   </footer>
 <script>
 document.querySelector('.menu-toggle').addEventListener('click',()=>document.querySelector('.site-header').classList.toggle('open'));
-document.getElementById('contact-form').addEventListener('submit',async(e)=>{e.preventDefault();const data={company:company.value,email:email.value,phone:phone.value,message:message.value};try{await fetch("https://script.google.com/macros/s/AKfycbxDrfoXtpsJdMwS7g2ZSVuDXn2espjaN0G48jNuQhw31bRb5k89wVjUWbCY7R-_4QGQ/exec",{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});document.getElementById('form-success').style.display='block';e.target.reset()}catch(err){document.getElementById('form-success').textContent='Please try again or contact Qythera directly.';document.getElementById('form-success').style.display='block'}});
+document.getElementById('contact-form').addEventListener('submit',async(e)=>{e.preventDefault();const data={company:company.value,email:email.value,phone:phone.value,message:message.value};try{await fetch("https://script.google.com/macros/s/AKfycbz-ntM8xVym3Jlh6I30Pt6PMQZL5BLSmM14stPPck81PgfAHwyR8cTyyf0fP-cw75tC/exec",{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});document.getElementById('form-success').style.display='block';e.target.reset()}catch(err){document.getElementById('form-success').textContent='Please try again or contact Qythera directly.';document.getElementById('form-success').style.display='block'}});
 </script>
 </body>
 </html>
