@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Build a KPI Dashboard in Power BI | Qythera</title>
+<meta name="description" content="Learn how to build a KPI dashboard in Power BI step by step. From data connection to live dashboard deployment — a complete guide for business teams and analysts.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://qythera.co.in/blogs/how-to-build-kpi-dashboard-power-bi.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Build a KPI Dashboard in Power BI",
+  "description": "Learn how to build a KPI dashboard in Power BI step by step. From data connection to live dashboard deployment — a complete guide for business teams and analysts.",
+  "url": "https://qythera.co.in/blogs/how-to-build-kpi-dashboard-power-bi.html",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://qythera.co.in/blogs/how-to-build-kpi-dashboard-power-bi.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Qythera",
+    "url": "https://qythera.co.in"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Qythera"
+  },
+  "keywords": "how to build KPI dashboard Power BI, Power BI KPI dashboard, Power BI dashboard development, business intelligence dashboard, KPI reporting, Power BI tutorial"
+}
+</script>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #f8fafc;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #172033;
+  line-height: 1.8;
+}
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 50px 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 25px;
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+.back-link:hover { text-decoration: underline; }
+h1 {
+  font-size: 44px;
+  line-height: 1.2;
+  color: #0f2b5b;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+h2 {
+  font-size: 30px;
+  line-height: 1.3;
+  color: #0f2b5b;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+h3 {
+  font-size: 22px;
+  line-height: 1.4;
+  color: #1e3a5f;
+  margin-top: 30px;
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+p {
+  font-size: 18px;
+  margin-bottom: 22px;
+  color: #374151;
+}
+a { color: #2563eb; }
+a:hover { text-decoration: underline; }
+ul {
+  margin: 0 0 22px 0;
+  padding-left: 24px;
+}
+ul li {
+  font-size: 18px;
+  color: #374151;
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+hr {
+  margin: 60px 0;
+  border: none;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* ── visual wrappers ── */
+.visual-block {
+  margin: 40px 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.visual-caption {
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+/* ── step cards ── */
+.step-card {
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+  margin-top: 40px;
+  padding: 28px 30px;
+  background: #f9fafb;
+  border-left: 4px solid #2563eb;
+  border-radius: 0 12px 12px 0;
+}
+.step-num {
+  min-width: 46px;
+  height: 46px;
+  background: #0f2b5b;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.step-body h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 21px;
+  color: #0f2b5b;
+}
+.step-body p { margin-bottom: 14px; font-size: 17px; }
+.step-body p:last-child { margin-bottom: 0; }
+.step-body ul { margin-bottom: 0; }
+.step-body ul li { font-size: 17px; }
+
+/* ── KPI type grid ── */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 30px 0;
+}
+.kpi-card {
+  padding: 20px 18px;
+  background: #f0f4ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 12px;
+  text-align: center;
+}
+.kpi-card .kpi-icon { font-size: 28px; display: block; margin-bottom: 8px; }
+.kpi-card .kpi-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f2b5b;
+  margin-bottom: 6px;
+}
+.kpi-card .kpi-examples {
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+/* ── visual type table ── */
+.visual-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 30px 0 10px;
+  font-size: 17px;
+}
+.visual-table thead tr th {
+  padding: 13px 16px;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 700;
+  background: #0f2b5b;
+  color: #ffffff;
+}
+.visual-table thead tr th:first-child { border-radius: 8px 0 0 0; }
+.visual-table thead tr th:last-child  { border-radius: 0 8px 0 0; }
+.visual-table tbody tr td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #374151;
+  vertical-align: top;
+  line-height: 1.6;
+}
+.visual-table tbody tr:nth-child(even) td { background: #f8fafc; }
+.visual-table tbody tr:last-child td { border-bottom: none; }
+.visual-table tbody tr td:first-child { font-weight: 600; color: #0f2b5b; }
+
+/* ── tip box ── */
+.tip-box {
+  margin: 36px 0;
+  padding: 22px 26px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 12px;
+  font-size: 17px;
+  color: #374151;
+  line-height: 1.7;
+}
+.tip-box strong { color: #92400e; }
+
+/* ── design rule pills ── */
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0 28px;
+}
+.pill {
+  padding: 8px 16px;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1e3a5f;
+}
+
+/* ── CTA ── */
+.cta-box {
+  margin-top: 30px;
+  padding: 35px;
+  background: #f5f8ff;
+  border: 1px solid #dbe3ee;
+  border-radius: 12px;
+}
+.cta-box h2 { margin-top: 0; }
+.btn {
+  display: inline-block;
+  padding: 14px 22px;
+  background: #2563eb;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: 10px;
+  transition: 0.3s ease;
+}
+.btn:hover { opacity: 0.9; text-decoration: none; }
+
+/* ── related ── */
+.related-articles { margin-top: 50px; }
+.related-articles h2 { margin-top: 0; }
+.related-articles ul { padding-left: 0; list-style: none; }
+.related-articles ul li {
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 17px;
+}
+.related-articles ul li:last-child { border-bottom: none; }
+.related-articles ul li a { font-weight: 600; }
+
+@media (max-width: 768px) {
+  .container { margin: 20px; padding: 30px 20px; }
+  h1 { font-size: 34px; }
+  h2 { font-size: 26px; }
+  h3 { font-size: 20px; }
+  p, ul li { font-size: 17px; }
+  .step-card { flex-direction: column; gap: 14px; padding: 22px 18px; }
+  .kpi-grid { grid-template-columns: 1fr 1fr; }
+  .visual-table { font-size: 14px; }
+  .visual-table thead tr th,
+  .visual-table tbody tr td { padding: 10px 12px; }
+}
+@media (max-width: 480px) {
+  .kpi-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<a href="/" class="back-link">← Back to Qythera</a>
+
+<h1>How to Build a KPI Dashboard in Power BI</h1>
+
+<p>
+A KPI dashboard is one of the most powerful tools a business can give its decision-makers. When built correctly in Power BI, it replaces hours of manual report preparation with a single, always-current view of the metrics that matter most — sales performance, inventory levels, financial health, operational efficiency, or any combination of business-critical indicators.
+</p>
+<p>
+Power BI is the leading business intelligence platform for building KPI dashboards because it connects directly to virtually any data source, refreshes automatically on a schedule, and produces interactive, visually clear reports that non-technical stakeholders can navigate without training.
+</p>
+<p>
+In this guide, we walk through the complete process of building a KPI dashboard in Power BI — from planning and data connection through to design, publishing, and ongoing maintenance. Whether you are building your first dashboard or looking to improve an existing one, this step-by-step approach covers everything you need to get it right.
+</p>
+
+<!-- ── HERO: Power BI dashboard mockup SVG ── -->
+<div class="visual-block">
+<svg viewBox="0 0 840 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:12px;">
+  <!-- background -->
+  <rect x="0" y="0" width="840" height="340" rx="12" fill="#0f2b5b"/>
+
+  <!-- top bar -->
+  <rect x="0" y="0" width="840" height="44" rx="12" fill="#0a1f42"/>
+  <rect x="12" y="14" width="6" height="16" rx="3" fill="#f59e0b"/>
+  <rect x="24" y="14" width="120" height="16" rx="3" fill="#1e3a6e"/>
+  <text x="200" y="27" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" fill="#93c5fd">Sales KPI Dashboard</text>
+  <rect x="660" y="14" width="60" height="16" rx="3" fill="#1e3a6e"/>
+  <rect x="728" y="14" width="46" height="16" rx="3" fill="#2563eb"/>
+  <text x="751" y="27" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" fill="#ffffff">Refresh</text>
+
+  <!-- ── ROW 1: 4 KPI cards ── -->
+  <!-- card 1 -->
+  <rect x="16" y="56" width="188" height="80" rx="8" fill="#1e3a6e"/>
+  <text x="28" y="78" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#93c5fd" font-weight="600">TOTAL REVENUE</text>
+  <text x="28" y="108" font-family="Arial,Helvetica,sans-serif" font-size="26" font-weight="700" fill="#ffffff">₹48.2L</text>
+  <text x="28" y="126" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#34d399">▲ 12.4% vs last month</text>
+
+  <!-- card 2 -->
+  <rect x="212" y="56" width="188" height="80" rx="8" fill="#1e3a6e"/>
+  <text x="224" y="78" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#93c5fd" font-weight="600">ORDERS CLOSED</text>
+  <text x="224" y="108" font-family="Arial,Helvetica,sans-serif" font-size="26" font-weight="700" fill="#ffffff">1,284</text>
+  <text x="224" y="126" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#34d399">▲ 8.1% vs last month</text>
+
+  <!-- card 3 -->
+  <rect x="408" y="56" width="188" height="80" rx="8" fill="#1e3a6e"/>
+  <text x="420" y="78" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#93c5fd" font-weight="600">CONVERSION RATE</text>
+  <text x="420" y="108" font-family="Arial,Helvetica,sans-serif" font-size="26" font-weight="700" fill="#ffffff">34.7%</text>
+  <text x="420" y="126" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#fbbf24">▼ 1.2% vs last month</text>
+
+  <!-- card 4 -->
+  <rect x="604" y="56" width="220" height="80" rx="8" fill="#1e3a6e"/>
+  <text x="616" y="78" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#93c5fd" font-weight="600">AVG ORDER VALUE</text>
+  <text x="616" y="108" font-family="Arial,Helvetica,sans-serif" font-size="26" font-weight="700" fill="#ffffff">₹3,752</text>
+  <text x="616" y="126" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#34d399">▲ 4.6% vs last month</text>
+
+  <!-- ── ROW 2: bar chart + donut + line ── -->
+  <!-- bar chart -->
+  <rect x="16" y="148" width="380" height="176" rx="8" fill="#1e3a6e"/>
+  <text x="28" y="170" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#93c5fd">Monthly Revenue Trend</text>
+  <!-- bars -->
+  <rect x="36"  y="238" width="28" height="62" rx="3" fill="#2563eb" opacity="0.7"/>
+  <rect x="76"  y="224" width="28" height="76" rx="3" fill="#2563eb" opacity="0.7"/>
+  <rect x="116" y="248" width="28" height="52" rx="3" fill="#2563eb" opacity="0.7"/>
+  <rect x="156" y="216" width="28" height="84" rx="3" fill="#2563eb" opacity="0.7"/>
+  <rect x="196" y="232" width="28" height="68" rx="3" fill="#2563eb" opacity="0.7"/>
+  <rect x="236" y="208" width="28" height="92" rx="3" fill="#2563eb" opacity="0.85"/>
+  <rect x="276" y="196" width="28" height="104" rx="3" fill="#2563eb"/>
+  <rect x="316" y="184" width="28" height="116" rx="3" fill="#f59e0b"/>
+  <!-- month labels -->
+  <text x="50"  y="314" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd">Jul</text>
+  <text x="90"  y="314" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd">Aug</text>
+  <text x="130" y="314" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd">Sep</text>
+  <text x="170" y="314" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd">Oct</text>
+  <text x="210" y="314" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd">Nov</text>
+  <text x="250" y="314" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd">Dec</text>
+  <text x="290" y="314" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd">Jan</text>
+  <text x="330" y="314" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#f59e0b">Feb</text>
+
+  <!-- donut chart -->
+  <rect x="404" y="148" width="200" height="176" rx="8" fill="#1e3a6e"/>
+  <text x="416" y="170" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#93c5fd">Sales by Region</text>
+  <circle cx="504" cy="242" r="52" fill="none" stroke="#2563eb" stroke-width="22" stroke-dasharray="196 130" stroke-dashoffset="0"/>
+  <circle cx="504" cy="242" r="52" fill="none" stroke="#f59e0b" stroke-width="22" stroke-dasharray="82 244" stroke-dashoffset="-196"/>
+  <circle cx="504" cy="242" r="52" fill="none" stroke="#34d399" stroke-width="22" stroke-dasharray="48 278" stroke-dashoffset="-278"/>
+  <circle cx="504" cy="242" r="30" fill="#1e3a6e"/>
+  <text x="504" y="238" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" fill="#ffffff">60%</text>
+  <text x="504" y="254" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd">North</text>
+
+  <!-- line chart -->
+  <rect x="612" y="148" width="212" height="176" rx="8" fill="#1e3a6e"/>
+  <text x="624" y="170" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#93c5fd">Conversion Rate Trend</text>
+  <polyline points="628,280 648,260 668,270 688,248 708,255 728,236 748,240 768,222 788,210 808,200"
+    fill="none" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="808" cy="200" r="5" fill="#34d399"/>
+  <!-- area fill -->
+  <polygon points="628,300 628,280 648,260 668,270 688,248 708,255 728,236 748,240 768,222 788,210 808,200 808,300"
+    fill="#34d399" opacity="0.08"/>
+
+  <!-- legend bottom -->
+  <rect x="16" y="328" width="12" height="8" rx="2" fill="#2563eb"/>
+  <text x="32" y="336" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#93c5fd">Revenue</text>
+  <rect x="120" y="328" width="12" height="8" rx="2" fill="#f59e0b"/>
+  <text x="136" y="336" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#93c5fd">Current Month</text>
+  <rect x="260" y="328" width="12" height="8" rx="2" fill="#34d399"/>
+  <text x="276" y="336" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#93c5fd">Conversion Trend</text>
+</svg>
+<p class="visual-caption">A well-designed Power BI KPI dashboard gives every stakeholder an instant, current view of business performance.</p>
+</div>
+
+<h2>What Is a KPI Dashboard in Power BI?</h2>
+<p>
+A KPI dashboard in Power BI is an interactive reporting canvas that displays the key performance indicators most critical to a business function — sales, inventory, finance, operations, or executive oversight — in a single, visually organized view. Unlike static reports that are produced manually on a schedule, a Power BI KPI dashboard connects directly to live data sources and refreshes automatically, so stakeholders always see current figures without anyone needing to prepare or distribute a report.
+</p>
+<p>
+Power BI dashboards typically combine card visuals showing headline KPI values, charts displaying trends over time, tables for detailed breakdowns, and interactive slicers that allow users to filter by date range, region, product category, or any other relevant dimension. The result is a reporting tool that is both informative at a glance and deep enough for detailed analysis.
+</p>
+
+<h2>Before You Build: Planning Your KPI Dashboard</h2>
+<p>
+The most common reason Power BI dashboards fail to deliver value is that they are built before the reporting requirements are clearly defined. Spending time on planning before opening Power BI Desktop almost always results in a better, faster build and a dashboard that stakeholders actually use.
+</p>
+
+<h3>Define Your Audience</h3>
+<p>
+Different stakeholders need different information at different levels of detail. An executive dashboard showing monthly revenue and margin needs to look and function very differently from an operational dashboard a warehouse manager checks hourly. Before building, clearly identify who will use the dashboard, what decisions they need it to inform, and how frequently they will refer to it.
+</p>
+
+<h3>Identify the Right KPIs</h3>
+<p>
+Resist the temptation to include every available metric. A dashboard with thirty KPIs is harder to read than one with eight well-chosen ones. Focus on the metrics that directly inform decisions and actions. A useful test: if a KPI moved significantly in either direction, would it change what someone does? If not, it probably does not belong on the dashboard.
+</p>
+
+<!-- ── KPI TYPE GRID ── -->
+<div class="kpi-grid">
+  <div class="kpi-card">
+    <span class="kpi-icon">💰</span>
+    <div class="kpi-title">Sales KPIs</div>
+    <div class="kpi-examples">Revenue, Growth Rate, Conversion, Pipeline Value, AOV</div>
+  </div>
+  <div class="kpi-card">
+    <span class="kpi-icon">📦</span>
+    <div class="kpi-title">Inventory KPIs</div>
+    <div class="kpi-examples">Stock Levels, Turnover, Aging, Stockout Rate, Reorder Status</div>
+  </div>
+  <div class="kpi-card">
+    <span class="kpi-icon">📊</span>
+    <div class="kpi-title">Financial KPIs</div>
+    <div class="kpi-examples">Gross Margin, Net Profit, Cash Flow, Budget Variance, EBITDA</div>
+  </div>
+  <div class="kpi-card">
+    <span class="kpi-icon">⚙️</span>
+    <div class="kpi-title">Operations KPIs</div>
+    <div class="kpi-examples">Fulfillment Rate, On-Time Delivery, Productivity, Utilization</div>
+  </div>
+  <div class="kpi-card">
+    <span class="kpi-icon">🤝</span>
+    <div class="kpi-title">Procurement KPIs</div>
+    <div class="kpi-examples">PO Cycle Time, Supplier Lead Time, Cost per Order, Compliance</div>
+  </div>
+  <div class="kpi-card">
+    <span class="kpi-icon">🎯</span>
+    <div class="kpi-title">Executive KPIs</div>
+    <div class="kpi-examples">Revenue vs Target, Headcount Cost, NPS, Strategic Milestones</div>
+  </div>
+</div>
+
+<h3>Map Your Data Sources</h3>
+<p>
+Before connecting anything in Power BI, list every data source your KPIs will draw from — ERP systems, CRM platforms, Excel files, SQL databases, accounting software, or cloud platforms. Understanding your data landscape upfront prevents mid-build surprises and helps you plan the data transformation work that will be needed in Power Query.
+</p>
+
+<h2>Step-by-Step: Building Your KPI Dashboard in Power BI</h2>
+
+<!-- ── STEP PROGRESS SVG ── -->
+<div class="visual-block">
+<svg viewBox="0 0 840 72" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+  <rect x="0" y="0" width="840" height="72" rx="10" fill="#f0f4ff"/>
+
+  <!-- connecting line -->
+  <line x1="70" y1="36" x2="770" y2="36" stroke="#c7d2fe" stroke-width="2"/>
+
+  <!-- steps -->
+  <!-- 1 -->
+  <circle cx="70" cy="36" r="20" fill="#2563eb"/>
+  <text x="70" y="41" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#fff">1</text>
+  <text x="70" y="62" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#374151">Connect</text>
+
+  <!-- 2 -->
+  <circle cx="210" cy="36" r="20" fill="#2563eb"/>
+  <text x="210" y="41" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#fff">2</text>
+  <text x="210" y="62" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#374151">Transform</text>
+
+  <!-- 3 -->
+  <circle cx="350" cy="36" r="20" fill="#2563eb"/>
+  <text x="350" y="41" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#fff">3</text>
+  <text x="350" y="62" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#374151">Model</text>
+
+  <!-- 4 -->
+  <circle cx="490" cy="36" r="20" fill="#2563eb"/>
+  <text x="490" y="41" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#fff">4</text>
+  <text x="490" y="62" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#374151">Measures</text>
+
+  <!-- 5 -->
+  <circle cx="630" cy="36" r="20" fill="#2563eb"/>
+  <text x="630" y="41" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#fff">5</text>
+  <text x="630" y="62" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#374151">Design</text>
+
+  <!-- 6 -->
+  <circle cx="770" cy="36" r="20" fill="#0f2b5b"/>
+  <text x="770" y="41" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#fff">6</text>
+  <text x="770" y="62" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#374151">Publish</text>
+</svg>
+<p class="visual-caption">The six stages of building a KPI dashboard in Power BI — each stage depends on the one before it.</p>
+</div>
+
+<div class="step-card">
+  <div class="step-num">1</div>
+  <div class="step-body">
+    <h3>Connect Power BI to Your Data Sources</h3>
+    <p>
+      Open Power BI Desktop and use the Get Data option to connect to your data sources. Power BI supports over 100 native connectors, including:
+    </p>
+    <ul>
+      <li>Excel workbooks and CSV files</li>
+      <li>SQL Server, MySQL, and PostgreSQL databases</li>
+      <li>SharePoint lists and OneDrive files</li>
+      <li>ERP systems including SAP and Oracle</li>
+      <li>CRM platforms including Salesforce and Dynamics 365</li>
+      <li>Cloud platforms including Azure, Google BigQuery, and AWS</li>
+      <li>REST APIs for custom system integrations</li>
+    </ul>
+    <p>
+      If your business stores data across multiple systems, connect to each one separately. Power BI can blend data from different sources within a single report, which is one of its most powerful capabilities for businesses that have not yet centralized their data into a single warehouse.
+    </p>
+  </div>
+</div>
+
+<div class="step-card">
+  <div class="step-num">2</div>
+  <div class="step-body">
+    <h3>Transform and Clean Your Data in Power Query</h3>
+    <p>
+      Once connected, Power BI opens the Power Query Editor — a data transformation environment where you can clean, reshape, and prepare your data before it enters the reporting layer. This step is critical. Time spent here directly determines the accuracy and reliability of every KPI on your dashboard.
+    </p>
+    <p>Common Power Query transformations for KPI dashboards include:</p>
+    <ul>
+      <li>Removing duplicate rows and blank records</li>
+      <li>Renaming columns to consistent, readable names</li>
+      <li>Changing data types — ensuring dates are date fields, not text strings</li>
+      <li>Filtering out irrelevant rows that would skew calculations</li>
+      <li>Merging tables from different sources on common key fields</li>
+      <li>Creating calculated columns needed for KPI formulas</li>
+      <li>Unpivoting wide tables into the long format Power BI models work best with</li>
+    </ul>
+    <p>
+      Every transformation step is recorded as a query step and can be edited or reordered at any time. When the data refreshes, all transformations are reapplied automatically — meaning your cleaning logic runs every cycle without manual intervention.
+    </p>
+  </div>
+</div>
+
+<div class="step-card">
+  <div class="step-num">3</div>
+  <div class="step-body">
+    <h3>Build Your Data Model</h3>
+    <p>
+      The data model is the structural backbone of your Power BI report. It defines how tables relate to each other — which fields join, in which direction, and with what cardinality. A well-built data model makes KPI calculations simpler, faster, and more accurate. A poorly built one creates calculation errors that are very difficult to diagnose later.
+    </p>
+    <p>
+      For most KPI dashboards, the recommended approach is a star schema — a central fact table containing transactional records (orders, shipments, inventory movements) surrounded by dimension tables containing descriptive attributes (products, customers, dates, locations). This structure is what Power BI is optimized to work with.
+    </p>
+    <p>Key modelling best practices include:</p>
+    <ul>
+      <li>Always include a dedicated Date table and mark it as a date table in Power BI</li>
+      <li>Use single-direction relationships wherever possible to avoid ambiguous filter paths</li>
+      <li>Avoid creating relationships on text columns — use integer keys instead</li>
+      <li>Keep calculated columns in Power Query where possible, reserving DAX for measures</li>
+    </ul>
+  </div>
+</div>
+
+<div class="step-card">
+  <div class="step-num">4</div>
+  <div class="step-body">
+    <h3>Write Your KPI Measures in DAX</h3>
+    <p>
+      DAX (Data Analysis Expressions) is the formula language used to create KPI calculations in Power BI. Every metric displayed on your dashboard — total revenue, growth rate, conversion rate, inventory turnover — is defined as a DAX measure. Measures calculate dynamically based on the filters applied by the user, which is what makes Power BI dashboards interactive and context-sensitive.
+    </p>
+    <p>Essential DAX patterns for KPI dashboards include:</p>
+    <ul>
+      <li><strong>Basic aggregations</strong> — SUM, AVERAGE, COUNT, DISTINCTCOUNT for headline KPI values</li>
+      <li><strong>Time intelligence</strong> — SAMEPERIODLASTYEAR, DATEADD, TOTALYTD for period comparisons</li>
+      <li><strong>Percentage change</strong> — calculating variance between current and prior periods</li>
+      <li><strong>Conditional formatting values</strong> — measures that return positive or negative flags for colour coding</li>
+      <li><strong>Running totals</strong> — cumulative measures for trend charts</li>
+    </ul>
+
+    <div class="tip-box">
+      <strong>Pro tip:</strong> Name every DAX measure with a clear prefix that indicates its type — for example, [Rev] Total Revenue, [Rev] MoM Growth %, [Inv] Stockout Rate. This keeps the fields list organised as the number of measures grows and makes the model easier for others to understand and maintain.
+    </div>
+  </div>
+</div>
+
+<div class="step-card">
+  <div class="step-num">5</div>
+  <div class="step-body">
+    <h3>Design the Dashboard Layout and Visuals</h3>
+    <p>
+      Dashboard design is where many technically correct Power BI reports fail to deliver their full value. A dashboard that is hard to read, poorly organized, or visually inconsistent reduces stakeholder trust and adoption — regardless of how accurate the underlying data is.
+    </p>
+    <p>
+      Start with the layout. Position your most important headline KPIs at the top of the canvas using Card visuals, where they are the first thing a user sees. Below them, place trend charts and breakdowns that support the headline figures. Tables and detailed drill-down content belong at the bottom or on secondary report pages.
+    </p>
+
+    <p><strong>Choosing the right visual type for each KPI:</strong></p>
+
+    <table class="visual-table">
+      <thead>
+        <tr>
+          <th>Visual Type</th>
+          <th>Best Used For</th>
+          <th>Avoid When</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Card</td>
+          <td>Single headline KPI values with target comparison</td>
+          <td>Showing trends or distributions</td>
+        </tr>
+        <tr>
+          <td>KPI Visual</td>
+          <td>Current value vs target with trend indicator</td>
+          <td>Multiple simultaneous comparisons</td>
+        </tr>
+        <tr>
+          <td>Line Chart</td>
+          <td>Trends over time, rate changes, running totals</td>
+          <td>Comparing discrete categories</td>
+        </tr>
+        <tr>
+          <td>Bar / Column Chart</td>
+          <td>Comparing values across categories or periods</td>
+          <td>Continuous time series trends</td>
+        </tr>
+        <tr>
+          <td>Donut / Pie Chart</td>
+          <td>Part-to-whole breakdowns with few segments</td>
+          <td>More than five categories or precise comparison</td>
+        </tr>
+        <tr>
+          <td>Matrix Table</td>
+          <td>Multi-dimensional data breakdowns, drill-through</td>
+          <td>Executive headline views</td>
+        </tr>
+        <tr>
+          <td>Gauge</td>
+          <td>Single KPI vs target — progress toward a goal</td>
+          <td>Showing absolute values or trends</td>
+        </tr>
+        <tr>
+          <td>Map</td>
+          <td>Geographic distribution of sales, orders, or customers</td>
+          <td>Non-geographic breakdowns</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Design principles to follow on every dashboard:</strong></p>
+    <div class="pill-row">
+      <span class="pill">Limit to 6–8 KPIs per page</span>
+      <span class="pill">Consistent colour palette throughout</span>
+      <span class="pill">Green = good, Red = alert, Amber = warning</span>
+      <span class="pill">Use white space — do not fill every pixel</span>
+      <span class="pill">Add slicers for Date, Region, Product</span>
+      <span class="pill">Label every visual clearly</span>
+      <span class="pill">Show target vs actual on KPI cards</span>
+      <span class="pill">Avoid 3D charts entirely</span>
+    </div>
+  </div>
+</div>
+
+<div class="step-card">
+  <div class="step-num">6</div>
+  <div class="step-body">
+    <h3>Publish, Schedule Refresh, and Share</h3>
+    <p>
+      Once your dashboard is built and validated, publish it to the Power BI Service (powerbi.com) using the Publish button in Power BI Desktop. Publishing makes the report available in the cloud, where you can configure automatic data refresh and manage access for stakeholders.
+    </p>
+    <p>After publishing, complete these essential configuration steps:</p>
+    <ul>
+      <li><strong>Configure a gateway:</strong> if your data sources are on-premises (SQL Server, local Excel files, ERP systems), install and configure an on-premises data gateway to allow Power BI Service to reach them</li>
+      <li><strong>Set the refresh schedule:</strong> go to the dataset settings in Power BI Service and configure how frequently the data should refresh — daily, twice daily, hourly, or up to eight times per day on standard licenses</li>
+      <li><strong>Set up a dashboard in the service:</strong> pin your most important visuals to a Power BI dashboard (separate from the report) for a quick-view summary stakeholders can access directly from the Power BI home screen</li>
+      <li><strong>Configure sharing and permissions:</strong> share the report with specific users or distribute it through a Power BI workspace or app to control who can view, edit, or reshare the dashboard</li>
+      <li><strong>Set up data alerts:</strong> configure threshold-based email alerts so stakeholders are notified automatically when a KPI falls below or exceeds a defined value — without needing to check the dashboard manually</li>
+    </ul>
+    <p>
+      Our <a href="/power-automate-integration.html">Power Automate Integration</a> service extends this further by automating scheduled report delivery via email and Teams, so the right people receive the right information at the right time without checking the portal manually.
+    </p>
+  </div>
+</div>
+
+<!-- ── DASHBOARD ANATOMY SVG ── -->
+<h2>Anatomy of a Well-Built Power BI KPI Dashboard</h2>
+<p>
+Understanding how to lay out a dashboard is as important as knowing which data to include. The visual below shows the recommended structure for a KPI dashboard that is easy to scan, interpret, and act on.
+</p>
+
+<div class="visual-block">
+<svg viewBox="0 0 840 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:12px;">
+  <rect x="0" y="0" width="840" height="400" rx="12" fill="#f0f4ff"/>
+
+  <!-- title bar area -->
+  <rect x="16" y="14" width="808" height="44" rx="8" fill="#0f2b5b"/>
+  <text x="32" y="41" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#ffffff">Dashboard Title + Date Range Slicer + Logo</text>
+  <rect x="640" y="22" width="84" height="28" rx="6" fill="#2563eb"/>
+  <text x="682" y="40" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="12" fill="#fff">Date Filter</text>
+  <rect x="732" y="22" width="80" height="28" rx="6" fill="#1e3a6e"/>
+  <text x="772" y="40" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="12" fill="#93c5fd">Region ▾</text>
+
+  <!-- zone label: headline KPIs -->
+  <rect x="16" y="70" width="808" height="90" rx="8" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="420" y="96" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" fill="#1d4ed8">ZONE 1 — Headline KPI Cards (4–6 cards across the top)</text>
+  <text x="420" y="116" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="12" fill="#374151">Total Revenue  |  Orders Closed  |  Conversion Rate  |  Avg Order Value  |  Target Attainment</text>
+  <text x="420" y="148" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#6b7280">Each card shows: current value · vs prior period · vs target · trend arrow</text>
+
+  <!-- zone 2: charts -->
+  <rect x="16" y="172" width="528" height="140" rx="8" fill="#dcfce7" stroke="#86efac" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="280" y="198" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" fill="#166534">ZONE 2 — Primary Trend Chart</text>
+  <text x="280" y="218" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="12" fill="#374151">Line or bar chart showing the main KPI over time</text>
+  <text x="280" y="238" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#6b7280">e.g. Monthly Revenue vs Target · Weekly Orders · Daily Inventory Levels</text>
+  <text x="280" y="294" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#6b7280">Largest visual zone — given most screen real estate</text>
+
+  <!-- zone 3: breakdown -->
+  <rect x="556" y="172" width="268" height="140" rx="8" fill="#fef9c3" stroke="#fde68a" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="690" y="198" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" fill="#854d0e">ZONE 3 — Breakdown Visual</text>
+  <text x="690" y="218" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="12" fill="#374151">Donut, bar, or map</text>
+  <text x="690" y="238" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#6b7280">Split by: Region · Product</text>
+  <text x="690" y="256" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#6b7280">Category · Sales Rep</text>
+
+  <!-- zone 4: detail table -->
+  <rect x="16" y="324" width="808" height="62" rx="8" fill="#fce7f3" stroke="#f9a8d4" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="420" y="350" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" fill="#9d174d">ZONE 4 — Detail Table or Drill-Through</text>
+  <text x="420" y="370" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="12" fill="#374151">Matrix or table for row-level data · Product breakdown · Transaction list · Exceptions and alerts</text>
+</svg>
+<p class="visual-caption">Structure your Power BI canvas in four zones — stakeholders scan top to bottom, from summary to detail.</p>
+</div>
+
+<h2>Common Power BI KPI Dashboard Mistakes to Avoid</h2>
+<ul>
+  <li><strong>Too many KPIs on one page:</strong> dashboards with more than eight headline metrics become overwhelming. Use multiple report pages for different audience levels — executive summary, operational detail, product breakdown.</li>
+  <li><strong>No date table in the data model:</strong> without a proper date table, time intelligence DAX functions will not work correctly. Always create and mark a dedicated date table.</li>
+  <li><strong>Using imported data without a refresh schedule:</strong> a dashboard that is not refreshing is just a static screenshot. Always configure a scheduled refresh after publishing.</li>
+  <li><strong>Mismatched KPI definitions:</strong> if different departments define a KPI differently, the dashboard will show figures that conflict with reports from other teams. Agree on definitions before building.</li>
+  <li><strong>No target values for comparison:</strong> KPI cards that show only the current value without a target or prior period comparison give users no context for whether the performance is good or bad.</li>
+  <li><strong>Overusing pie charts:</strong> pie charts are difficult to interpret accurately when there are more than three or four segments. Use bar charts for category comparisons instead.</li>
+</ul>
+
+<div class="tip-box">
+  <strong>Testing tip:</strong> Before sharing any dashboard with stakeholders, verify every KPI figure manually against a known source — a finance report, a CRM export, or an ERP summary. The first time a KPI dashboard shows an incorrect number, stakeholder trust is very difficult to recover.
+</div>
+
+<h2>When to Use a Professional Power BI Dashboard Service</h2>
+<p>
+Building a basic KPI dashboard in Power BI is achievable with moderate technical skills and some patience. However, there are situations where working with a professional Power BI implementation partner delivers significantly better and faster results:
+</p>
+<ul>
+  <li>Your data comes from multiple complex systems that require significant transformation before they can be modelled together</li>
+  <li>Your KPI calculations involve complex DAX logic, time intelligence, or multi-table aggregations</li>
+  <li>You need the dashboard to meet specific organizational design standards or embed within existing business applications</li>
+  <li>You need row-level security to ensure different user groups see only their own regional or departmental data</li>
+  <li>The dashboard needs to scale across a large organization with hundreds of users and multiple data refresh dependencies</li>
+</ul>
+<p>
+Our <a href="/power-bi-dashboard-services.html">Power BI Dashboard Services</a> cover the full build process — from data source assessment and Power Query transformation through to DAX measure development, dashboard design, publishing, and refresh configuration. For organizations that rely heavily on structured spreadsheet workflows, our <a href="/excel-automation-services.html">Excel Automation Services</a> can bridge the gap between existing Excel-based reporting and a fully automated Power BI environment.
+</p>
+
+<h2>Conclusion</h2>
+<p>
+Building a KPI dashboard in Power BI is a six-stage process: connect your data sources, transform and clean the data in Power Query, build a well-structured data model, write accurate DAX measures, design a clear and purposeful dashboard layout, and publish with scheduled refresh and appropriate access controls. Each stage matters — weaknesses in any one of them will reduce the accuracy, usability, or trustworthiness of the final dashboard.
+</p>
+<p>
+When built correctly, a Power BI KPI dashboard becomes the single most valuable reporting tool an organization has — giving every stakeholder immediate, accurate visibility into the metrics that drive their decisions, without anyone needing to prepare or distribute a report manually.
+</p>
+<p>
+For context on how KPI dashboards fit into a broader reporting automation strategy, read our guide on <a href="/blogs/how-to-automate-reporting-processes.html">How to Automate Reporting Processes in Business</a> and our overview of the <a href="/blogs/benefits-of-automated-reporting.html">10 Benefits of Automated Reporting for Business Teams</a>.
+</p>
+
+<hr>
+
+<div class="related-articles">
+  <h2>Related Articles</h2>
+  <ul>
+    <li><a href="/blogs/reporting-automation-guide.html">What Is Reporting Automation and Why Businesses Need It</a></li>
+    <li><a href="/blogs/how-to-automate-reporting-processes.html">How to Automate Reporting Processes in Business</a></li>
+    <li><a href="/blogs/benefits-of-automated-reporting.html">10 Benefits of Automated Reporting for Business Teams</a></li>
+    <li><a href="/blogs/manual-vs-automated-reporting.html">Manual Reporting vs Automated Reporting: Which Is Better?</a></li>
+    <li><a href="/blogs/reporting-automation-best-practices.html">Reporting Automation Best Practices for Growing Businesses</a></li>
+  </ul>
+</div>
+
+<hr>
+
+<div class="cta-box">
+  <h2>Need a Power BI KPI Dashboard Built for Your Business?</h2>
+  <p>
+    Qythera designs and builds KPI dashboards in Power BI for sales teams, operations managers, inventory planners, and executive leadership. From data connection and Power Query transformation through to DAX measures, dashboard design, and automated refresh — we handle the full build so your team gets a dashboard that is accurate, scalable, and ready to use from day one.
+  </p>
+  <a class="btn" href="/power-bi-dashboard-services.html">Explore Power BI Dashboard Services</a>
+</div>
+
+</div>
+</body>
+</html>
