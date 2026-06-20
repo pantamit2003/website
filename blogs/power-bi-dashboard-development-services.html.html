@@ -1,15 +1,665 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Power BI Dashboard Development Services</title>
-<meta name="description" content="power bi dashboard development services">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Power BI Dashboard Development Services | Qythera</title>
+<meta name="description" content="Qythera builds custom Power BI dashboards for sales, inventory, finance, and operations teams. Get live, automated business intelligence dashboards built by experienced Power BI developers.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://qythera.co.in/power-bi-dashboard-services.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Power BI Dashboard Development",
+  "name": "Power BI Dashboard Development Services",
+  "description": "Custom Power BI dashboard development for sales, inventory, finance, and operations reporting. Data integration, DAX measures, dashboard design, and automated refresh.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Qythera",
+    "url": "https://qythera.co.in"
+  },
+  "areaServed": ["India", "United Kingdom", "Canada", "United States"],
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "B2B retail, manufacturing, logistics, distribution, FMCG, and e-commerce businesses"
+  }
+}
+</script>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #f8fafc;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #172033;
+  line-height: 1.8;
+}
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 50px 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 25px;
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+.back-link:hover { text-decoration: underline; }
+
+/* ── hero ── */
+.hero-eyebrow {
+  display: inline-block;
+  background: #eef2ff;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+}
+h1 {
+  font-size: 44px;
+  line-height: 1.2;
+  color: #0f2b5b;
+  margin-bottom: 22px;
+  font-weight: 700;
+}
+.hero-sub {
+  font-size: 19px;
+  color: #374151;
+  margin-bottom: 30px;
+  max-width: 760px;
+}
+h2 {
+  font-size: 30px;
+  line-height: 1.3;
+  color: #0f2b5b;
+  margin-top: 56px;
+  margin-bottom: 20px;
+}
+h3 {
+  font-size: 21px;
+  line-height: 1.4;
+  color: #1e3a5f;
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+p {
+  font-size: 18px;
+  margin-bottom: 22px;
+  color: #374151;
+}
+a { color: #2563eb; }
+a:hover { text-decoration: underline; }
+ul {
+  margin: 0 0 22px 0;
+  padding-left: 24px;
+}
+ul li {
+  font-size: 18px;
+  color: #374151;
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+hr {
+  margin: 56px 0;
+  border: none;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* ── hero CTA buttons ── */
+.hero-ctas { margin-bottom: 10px; }
+.btn {
+  display: inline-block;
+  padding: 14px 24px;
+  background: #2563eb;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-right: 12px;
+  transition: 0.3s ease;
+}
+.btn.secondary {
+  background: #ffffff;
+  color: #2563eb;
+  border: 2px solid #2563eb;
+  padding: 12px 22px;
+}
+.btn:hover { opacity: 0.9; text-decoration: none; }
+
+/* ── trust strip ── */
+.trust-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 30px 0 10px;
+}
+.trust-pill {
+  padding: 8px 16px;
+  background: #f0f4ff;
+  border: 1px solid #dbe3ee;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e3a5f;
+}
+
+/* ── visual wrappers ── */
+.visual-block { margin: 40px 0; border-radius: 12px; overflow: hidden; }
+.visual-caption {
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/* ── service cards ── */
+.service-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin: 30px 0;
+}
+.service-card {
+  padding: 26px 24px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  border-top: 4px solid #2563eb;
+}
+.service-card .s-icon {
+  font-size: 28px;
+  display: block;
+  margin-bottom: 12px;
+}
+.service-card p {
+  font-size: 16px;
+  margin-bottom: 0;
+  color: #374151;
+}
+
+/* ── process steps ── */
+.process-card {
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+  margin-top: 30px;
+  padding: 26px 28px;
+  background: #f9fafb;
+  border-left: 4px solid #2563eb;
+  border-radius: 0 12px 12px 0;
+}
+.process-num {
+  min-width: 44px;
+  height: 44px;
+  background: #0f2b5b;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.process-card h3 { margin-bottom: 8px; font-size: 19px; }
+.process-card p { font-size: 16px; margin-bottom: 0; }
+
+/* ── industries grid ── */
+.industry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 30px 0;
+}
+.industry-card {
+  padding: 20px 14px;
+  background: #f0f4ff;
+  border: 1px solid #dbe3ee;
+  border-radius: 12px;
+  text-align: center;
+}
+.industry-card .i-icon { font-size: 26px; display: block; margin-bottom: 8px; }
+.industry-card .i-label { font-size: 14px; font-weight: 700; color: #0f2b5b; }
+
+/* ── why us checklist ── */
+.checklist { list-style: none; padding-left: 0; margin: 0 0 22px 0; }
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 18px;
+  color: #374151;
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+.checklist li::before {
+  content: "✓";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ── deliverables table ── */
+.deliv-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 30px 0 10px;
+  font-size: 17px;
+}
+.deliv-table thead tr th {
+  padding: 13px 16px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+  background: #0f2b5b;
+  color: #ffffff;
+}
+.deliv-table thead tr th:first-child { border-radius: 8px 0 0 0; }
+.deliv-table thead tr th:last-child { border-radius: 0 8px 0 0; }
+.deliv-table tbody tr td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #374151;
+  vertical-align: top;
+  line-height: 1.6;
+}
+.deliv-table tbody tr:nth-child(even) td { background: #f8fafc; }
+.deliv-table tbody tr:last-child td { border-bottom: none; }
+.deliv-table tbody tr td:first-child { font-weight: 700; color: #0f2b5b; }
+
+/* ── FAQ ── */
+.faq-item {
+  margin-top: 24px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #e5e7eb;
+}
+.faq-item:last-child { border-bottom: none; }
+.faq-item h3 { font-size: 18px; margin-bottom: 8px; color: #0f2b5b; }
+.faq-item p { font-size: 16px; margin-bottom: 0; }
+
+/* ── CTA box ── */
+.cta-box {
+  margin-top: 30px;
+  padding: 35px;
+  background: #f5f8ff;
+  border: 1px solid #dbe3ee;
+  border-radius: 12px;
+}
+.cta-box h2 { margin-top: 0; }
+
+/* ── related ── */
+.related-articles { margin-top: 50px; }
+.related-articles h2 { margin-top: 0; }
+.related-articles ul { padding-left: 0; list-style: none; }
+.related-articles ul li {
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 17px;
+}
+.related-articles ul li:last-child { border-bottom: none; }
+.related-articles ul li a { font-weight: 600; }
+
+@media (max-width: 768px) {
+  .container { margin: 20px; padding: 30px 20px; }
+  h1 { font-size: 32px; }
+  .hero-sub { font-size: 17px; }
+  h2 { font-size: 26px; }
+  h3 { font-size: 19px; }
+  p, ul li { font-size: 17px; }
+  .service-grid { grid-template-columns: 1fr; }
+  .process-card { flex-direction: column; gap: 14px; padding: 22px 18px; }
+  .industry-grid { grid-template-columns: 1fr 1fr; }
+  .deliv-table { font-size: 14px; }
+  .deliv-table thead tr th, .deliv-table tbody tr td { padding: 10px 11px; }
+  .btn { display: block; margin-right: 0; margin-bottom: 12px; text-align: center; }
+}
+@media (max-width: 480px) {
+  .industry-grid { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
+<div class="container">
+
+<a href="/" class="back-link">← Back to Qythera</a>
+
+<span class="hero-eyebrow">Power BI Dashboard Development</span>
 <h1>Power BI Dashboard Development Services</h1>
+<p class="hero-sub">
+  We design and build custom Power BI dashboards that turn scattered business data into clear, automated, decision-ready reporting — for sales, inventory, finance, and operations teams across India, the UK, Canada, and the USA.
+</p>
 
-<p>Content for power bi dashboard development services will go here.</p>
+<div class="hero-ctas">
+  <a class="btn" href="#contact">Get a Free Dashboard Consultation</a>
+  <a class="btn secondary" href="#process">See How We Work</a>
+</div>
 
+<div class="trust-strip">
+  <span class="trust-pill">📊 Custom Dashboard Builds</span>
+  <span class="trust-pill">🔄 Automated Data Refresh</span>
+  <span class="trust-pill">🌍 India · UK · Canada · USA</span>
+  <span class="trust-pill">🏭 Retail · Manufacturing · Logistics · FMCG</span>
+</div>
+
+<!-- ── HERO DASHBOARD MOCKUP SVG ── -->
+<div class="visual-block">
+<svg viewBox="0 0 840 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:12px;">
+  <rect x="0" y="0" width="840" height="320" rx="12" fill="#0f2b5b"/>
+
+  <!-- top bar -->
+  <rect x="0" y="0" width="840" height="42" rx="12" fill="#0a1f42"/>
+  <rect x="12" y="13" width="6" height="16" rx="3" fill="#f59e0b"/>
+  <text x="28" y="26" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" fill="#93c5fd">Executive Performance Dashboard</text>
+  <rect x="700" y="12" width="56" height="18" rx="4" fill="#1e3a6e"/>
+  <text x="728" y="25" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd">This Month</text>
+  <rect x="762" y="12" width="64" height="18" rx="4" fill="#2563eb"/>
+  <text x="794" y="25" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#ffffff">⟳ Refresh</text>
+
+  <!-- KPI cards row -->
+  <rect x="16" y="54" width="192" height="76" rx="8" fill="#1e3a6e"/>
+  <text x="28" y="74" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd" font-weight="600">REVENUE</text>
+  <text x="28" y="102" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="700" fill="#ffffff">₹52.6L</text>
+  <text x="28" y="118" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#34d399">▲ 14.2%</text>
+
+  <rect x="216" y="54" width="192" height="76" rx="8" fill="#1e3a6e"/>
+  <text x="228" y="74" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd" font-weight="600">INVENTORY TURNOVER</text>
+  <text x="228" y="102" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="700" fill="#ffffff">6.4x</text>
+  <text x="228" y="118" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#34d399">▲ 0.8 vs target</text>
+
+  <rect x="416" y="54" width="192" height="76" rx="8" fill="#1e3a6e"/>
+  <text x="428" y="74" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd" font-weight="600">FULFILLMENT RATE</text>
+  <text x="428" y="102" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="700" fill="#ffffff">97.8%</text>
+  <text x="428" y="118" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#fbbf24">▼ 0.4% vs target</text>
+
+  <rect x="616" y="54" width="208" height="76" rx="8" fill="#1e3a6e"/>
+  <text x="628" y="74" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd" font-weight="600">NET MARGIN</text>
+  <text x="628" y="102" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="700" fill="#ffffff">21.3%</text>
+  <text x="628" y="118" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#34d399">▲ 1.6% vs last qtr</text>
+
+  <!-- big chart -->
+  <rect x="16" y="142" width="392" height="162" rx="8" fill="#1e3a6e"/>
+  <text x="28" y="164" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#93c5fd">Revenue vs Target — Last 8 Months</text>
+  <polyline points="36,260 76,250 116,256 156,232 196,238 236,210 276,218 316,190"
+    fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="36,266 76,262 116,258 156,250 196,244 236,236 276,228 316,220"
+    fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5,4" stroke-linecap="round"/>
+  <circle cx="316" cy="190" r="5" fill="#2563eb"/>
+  <rect x="28" y="282" width="10" height="7" fill="#2563eb"/>
+  <text x="44" y="289" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd">Actual</text>
+  <rect x="110" y="282" width="10" height="7" fill="#f59e0b"/>
+  <text x="126" y="289" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd">Target</text>
+
+  <!-- donut -->
+  <rect x="420" y="142" width="194" height="162" rx="8" fill="#1e3a6e"/>
+  <text x="432" y="164" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#93c5fd">Revenue by Channel</text>
+  <circle cx="517" cy="232" r="48" fill="none" stroke="#2563eb" stroke-width="20" stroke-dasharray="170 130" stroke-dashoffset="0"/>
+  <circle cx="517" cy="232" r="48" fill="none" stroke="#f59e0b" stroke-width="20" stroke-dasharray="75 225" stroke-dashoffset="-170"/>
+  <circle cx="517" cy="232" r="48" fill="none" stroke="#34d399" stroke-width="20" stroke-dasharray="55 245" stroke-dashoffset="-245"/>
+  <circle cx="517" cy="232" r="27" fill="#1e3a6e"/>
+  <text x="517" y="237" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" fill="#ffffff">56%</text>
+  <text x="517" y="278" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd">B2B Direct</text>
+
+  <!-- table -->
+  <rect x="624" y="142" width="200" height="162" rx="8" fill="#1e3a6e"/>
+  <text x="636" y="164" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#93c5fd">Top Regions</text>
+  <text x="636" y="190" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#cbd5e1">North</text>
+  <text x="800" y="190" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">₹18.4L</text>
+  <text x="636" y="212" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#cbd5e1">West</text>
+  <text x="800" y="212" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">₹14.2L</text>
+  <text x="636" y="234" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#cbd5e1">South</text>
+  <text x="800" y="234" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">₹11.9L</text>
+  <text x="636" y="256" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#cbd5e1">East</text>
+  <text x="800" y="256" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">₹8.1L</text>
+  <line x1="636" y1="270" x2="812" y2="270" stroke="#334d77" stroke-width="1"/>
+  <text x="636" y="290" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" fill="#34d399">Total</text>
+  <text x="800" y="290" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" fill="#34d399">₹52.6L</text>
+</svg>
+<p class="visual-caption">A sample of the kind of live, interactive Power BI dashboard we build — fully automated, refreshing on schedule, with zero manual report preparation.</p>
+</div>
+
+<h2>Why Businesses Choose Power BI for Reporting</h2>
+<p>
+Power BI is the leading business intelligence platform for organizations that need accurate, automated, and interactive reporting — without the manual effort and error risk that comes with spreadsheet-based reporting. It connects directly to your existing systems, refreshes on a schedule, and gives every stakeholder a consistent, always-current view of business performance.
+</p>
+<p>
+At Qythera, we build Power BI dashboards that go beyond generic templates. Every dashboard we deliver is designed around your specific KPIs, your data sources, and the decisions your team actually needs to make — whether that's a sales director tracking pipeline performance, an inventory manager monitoring stock levels across warehouses, or a CEO reviewing consolidated business performance every morning.
+</p>
+
+<h2>Our Power BI Dashboard Development Services</h2>
+<div class="service-grid">
+  <div class="service-card">
+    <span class="s-icon">🔌</span>
+    <h3>Data Source Integration</h3>
+    <p>We connect Power BI to your ERP, CRM, Excel files, SQL databases, and cloud platforms — bringing fragmented data into one unified reporting environment.</p>
+  </div>
+  <div class="service-card">
+    <span class="s-icon">🧹</span>
+    <h3>Data Modelling & Transformation</h3>
+    <p>Using Power Query and structured data modelling, we clean, transform, and organize your data into a reliable foundation for accurate KPI calculations.</p>
+  </div>
+  <div class="service-card">
+    <span class="s-icon">📐</span>
+    <h3>Custom DAX Measures</h3>
+    <p>We build the exact KPI calculations your business needs — revenue growth, margin analysis, inventory turnover, fulfillment rates, and more — using clean, documented DAX.</p>
+  </div>
+  <div class="service-card">
+    <span class="s-icon">🎨</span>
+    <h3>Dashboard Design</h3>
+    <p>Every dashboard is designed for clarity — headline KPIs, trend charts, and breakdowns laid out so stakeholders can scan and act in seconds, not minutes.</p>
+  </div>
+  <div class="service-card">
+    <span class="s-icon">⚙️</span>
+    <h3>Automated Refresh & Distribution</h3>
+    <p>We configure scheduled data refresh, gateway connections, and automated report delivery so your dashboards stay current without manual intervention.</p>
+  </div>
+  <div class="service-card">
+    <span class="s-icon">🔐</span>
+    <h3>Access Control & Governance</h3>
+    <p>Role-based access, row-level security, and workspace management ensure the right people see the right data — securely and consistently.</p>
+  </div>
+</div>
+
+<h2>Dashboards We Build by Business Function</h2>
+<p>
+We design Power BI dashboards across every core business function. Each one connects directly to your existing data sources and refreshes automatically, so your team always has current visibility without preparing a single manual report.
+</p>
+<ul>
+  <li><strong>Sales Performance Dashboards</strong> — revenue tracking, pipeline health, conversion rates, and regional performance. See our dedicated <a href="/sales-dashboard-development.html">Sales Dashboard Development</a> service for more detail.</li>
+  <li><strong>Inventory & Warehouse Dashboards</strong> — stock levels, turnover, aging, and reorder visibility across multiple locations. See our <a href="/inventory-dashboard-development.html">Inventory Dashboard Development</a> service.</li>
+  <li><strong>Financial Reporting Dashboards</strong> — gross and net margin, budget variance, cash flow, and P&amp;L summaries refreshed automatically each cycle.</li>
+  <li><strong>Operations & Fulfillment Dashboards</strong> — order fulfillment rate, on-time delivery, cost per order, and productivity tracking.</li>
+  <li><strong>Executive Dashboards</strong> — a consolidated, board-ready view of revenue, profitability, inventory, and operational KPIs in one place.</li>
+  <li><strong>Procurement Dashboards</strong> — supplier performance, purchase order cycle time, and cost tracking across vendors.</li>
+</ul>
+
+<h2>Our Power BI Development Process</h2>
+<p id="process">
+We follow a structured, proven process for every Power BI engagement — designed to ensure the final dashboard is accurate, scalable, and genuinely used by your team, not just technically functional.
+</p>
+
+<div class="process-card">
+  <div class="process-num">1</div>
+  <div>
+    <h3>Discovery & Requirements</h3>
+    <p>We start by understanding your business, your reporting audience, and the specific decisions the dashboard needs to support — before touching any data or tools.</p>
+  </div>
+</div>
+
+<div class="process-card">
+  <div class="process-num">2</div>
+  <div>
+    <h3>Data Source Assessment</h3>
+    <p>We review your existing systems — ERP, CRM, spreadsheets, databases — and identify exactly what data is available, what needs cleaning, and how it should be connected.</p>
+  </div>
+</div>
+
+<div class="process-card">
+  <div class="process-num">3</div>
+  <div>
+    <h3>KPI Definition</h3>
+    <p>We work with you to define and document the exact KPIs your dashboard will track, including formulas, ownership, and target thresholds — ensuring consistency from day one.</p>
+  </div>
+</div>
+
+<div class="process-card">
+  <div class="process-num">4</div>
+  <div>
+    <h3>Data Modelling & DAX Development</h3>
+    <p>We build a clean, scalable data model and write the DAX measures needed to power every KPI on your dashboard accurately and efficiently.</p>
+  </div>
+</div>
+
+<div class="process-card">
+  <div class="process-num">5</div>
+  <div>
+    <h3>Dashboard Design & Build</h3>
+    <p>We design and build the dashboard layout, choosing the right visuals for each KPI and structuring the canvas for fast, intuitive interpretation.</p>
+  </div>
+</div>
+
+<div class="process-card">
+  <div class="process-num">6</div>
+  <div>
+    <h3>Publishing, Refresh & Handover</h3>
+    <p>We publish the dashboard, configure automated refresh and access permissions, and walk your team through how to use and maintain it going forward.</p>
+  </div>
+</div>
+
+<h2>What You Get: Deliverables</h2>
+<table class="deliv-table">
+  <thead>
+    <tr>
+      <th>Deliverable</th>
+      <th>What It Includes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Connected Data Sources</td>
+      <td>Live connections to your ERP, CRM, Excel, SQL, or cloud data — fully configured and tested</td>
+    </tr>
+    <tr>
+      <td>Clean Data Model</td>
+      <td>A structured, documented data model built for accuracy, performance, and future scalability</td>
+    </tr>
+    <tr>
+      <td>Custom KPI Measures</td>
+      <td>DAX measures for every KPI your business needs, named and documented for easy maintenance</td>
+    </tr>
+    <tr>
+      <td>Interactive Dashboard</td>
+      <td>A fully designed, multi-page Power BI report with slicers, drill-through, and mobile-friendly layout</td>
+    </tr>
+    <tr>
+      <td>Automated Refresh Schedule</td>
+      <td>Scheduled or real-time data refresh configured to match your reporting cadence</td>
+    </tr>
+    <tr>
+      <td>Access & Sharing Setup</td>
+      <td>Role-based permissions, workspace configuration, and distribution to the right stakeholders</td>
+    </tr>
+    <tr>
+      <td>Documentation & Handover</td>
+      <td>A clear handover document and walkthrough so your team can maintain and extend the dashboard</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Industries We Serve</h2>
+<div class="industry-grid">
+  <div class="industry-card"><span class="i-icon">🛍️</span><div class="i-label">Retail</div></div>
+  <div class="industry-card"><span class="i-icon">🏭</span><div class="i-label">Manufacturing</div></div>
+  <div class="industry-card"><span class="i-icon">🚚</span><div class="i-label">Logistics</div></div>
+  <div class="industry-card"><span class="i-icon">📦</span><div class="i-label">Distribution</div></div>
+  <div class="industry-card"><span class="i-icon">🛒</span><div class="i-label">FMCG</div></div>
+  <div class="industry-card"><span class="i-icon">💻</span><div class="i-label">E-Commerce</div></div>
+</div>
+
+<h2>Why Work With Qythera</h2>
+<ul class="checklist">
+  <li>Dashboards built around your actual KPIs and decisions — not generic templates</li>
+  <li>End-to-end delivery from data connection through to live, automated reporting</li>
+  <li>Clean, documented DAX and data models that your team can maintain long after handover</li>
+  <li>Experience across sales, inventory, finance, and operations reporting</li>
+  <li>Practical experience working with growing businesses across India, the UK, Canada, and the USA</li>
+  <li>Combined expertise in Power BI, Excel automation, and Power Automate for full reporting workflows</li>
+</ul>
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq-item">
+  <h3>How long does it take to build a Power BI dashboard?</h3>
+  <p>Most single-function dashboards (sales, inventory, or financial reporting) take two to four weeks from discovery to handover, depending on the complexity of your data sources and the number of KPIs required. Multi-function executive dashboards typically take four to six weeks.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Can you connect Power BI to our existing ERP or CRM system?</h3>
+  <p>Yes. Power BI supports over 100 native connectors, and we have experience integrating with common ERP, CRM, and accounting platforms. If your system requires a custom connection, we can typically build one using SQL or API-based integration.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Do we need to migrate away from Excel to use Power BI?</h3>
+  <p>No. Power BI can connect directly to your existing Excel files as a data source, and many of our clients use both tools together — Excel for ad hoc analysis and financial modelling, Power BI for automated, multi-user dashboard reporting.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Will our team be able to maintain the dashboard after handover?</h3>
+  <p>Yes. We document every data model, DAX measure, and configuration step, and provide a walkthrough session so your team understands how the dashboard works and how to make minor updates going forward.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Can you build dashboards for multiple departments at once?</h3>
+  <p>Yes. We frequently build connected dashboard suites — for example, a sales dashboard, an inventory dashboard, and an executive summary dashboard that consolidates KPIs from both — all built on a shared, governed data model.</p>
+</div>
+
+<hr>
+
+<div class="related-articles">
+  <h2>Related Reading</h2>
+  <ul>
+    <li><a href="/blogs/how-to-build-kpi-dashboard-power-bi.html">How to Build a KPI Dashboard in Power BI</a></li>
+    <li><a href="/blogs/top-15-kpis-business-dashboard.html">Top 15 KPIs Every Business Dashboard Should Track</a></li>
+    <li><a href="/blogs/power-bi-vs-excel-business-reporting.html">Power BI vs Excel for Business Reporting: Which Is Better?</a></li>
+    <li><a href="/blogs/reporting-automation-best-practices.html">Reporting Automation Best Practices for Growing Businesses</a></li>
+  </ul>
+</div>
+
+<hr>
+
+<div class="cta-box" id="contact">
+  <h2>Ready to Build Your Power BI Dashboard?</h2>
+  <p>
+    Tell us about your reporting needs and we'll put together a clear plan — including data sources, KPIs, and timeline — for a Power BI dashboard built specifically for your business.
+  </p>
+  <a class="btn" href="/contact.html">Request a Free Consultation</a>
+  <a class="btn secondary" href="/reporting-automation-services.html">Explore Reporting Automation Services</a>
+</div>
+
+</div>
 </body>
 </html>
