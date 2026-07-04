@@ -138,5 +138,11 @@
   <changefreq>monthly</changefreq>
   <priority>0.7</priority>
 </url>
+  <url>
+  <loc>https://qythera.co.in/blogs/Sales_dashboard_examples_in_powerbi.html</loc>
+  <lastmod>2026-07-04</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.7</priority>
+</url>
 
 </urlset>
