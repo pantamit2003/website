@@ -1,15 +1,849 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Sales Dashboard Examples in Power BI</title>
-<meta name="description" content="Sales Dashboard Examples in Power BI">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sales Dashboard Examples in Power BI | Qythera</title>
+<meta name="description" content="Explore real-world sales dashboard examples in Power BI. See what a well-built sales dashboard includes, which KPIs to track, and how to structure layouts for sales teams and management.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://qythera.co.in/blogs/sales-dashboard-examples-power-bi.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Sales Dashboard Examples in Power BI",
+  "description": "Explore real-world sales dashboard examples in Power BI. See what a well-built sales dashboard includes, which KPIs to track, and how to structure layouts for sales teams and management.",
+  "url": "https://qythera.co.in/blogs/sales-dashboard-examples-power-bi.html",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://qythera.co.in/blogs/sales-dashboard-examples-power-bi.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Qythera",
+    "url": "https://qythera.co.in"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Qythera"
+  },
+  "keywords": "sales dashboard examples Power BI, Power BI sales dashboard, sales performance dashboard, sales KPI dashboard Power BI, sales reporting Power BI, sales dashboard design"
+}
+</script>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #f8fafc;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #172033;
+  line-height: 1.8;
+}
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 50px 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 25px;
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+.back-link:hover { text-decoration: underline; }
+h1 {
+  font-size: 44px;
+  line-height: 1.2;
+  color: #0f2b5b;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+h2 {
+  font-size: 30px;
+  line-height: 1.3;
+  color: #0f2b5b;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+h3 {
+  font-size: 22px;
+  line-height: 1.4;
+  color: #1e3a5f;
+  margin-top: 30px;
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+p {
+  font-size: 18px;
+  margin-bottom: 22px;
+  color: #374151;
+}
+a { color: #2563eb; }
+a:hover { text-decoration: underline; }
+ul {
+  margin: 0 0 22px 0;
+  padding-left: 24px;
+}
+ul li {
+  font-size: 18px;
+  color: #374151;
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+hr {
+  margin: 60px 0;
+  border: none;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* ── visual wrappers ── */
+.visual-block { margin: 40px 0; border-radius: 12px; overflow: hidden; }
+.visual-caption {
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+/* ── example label ── */
+.example-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0f2b5b;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 7px 18px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  margin-top: 50px;
+}
+
+/* ── example description cards ── */
+.example-card {
+  padding: 26px 28px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-left: 4px solid #2563eb;
+  border-radius: 0 12px 12px 0;
+  margin-bottom: 10px;
+}
+.example-card h3 { margin-top: 0; margin-bottom: 10px; font-size: 20px; }
+.example-card p { font-size: 17px; margin-bottom: 12px; }
+.example-card p:last-child { margin-bottom: 0; }
+.example-card ul { margin-bottom: 0; }
+.example-card ul li { font-size: 16px; margin-bottom: 7px; }
+
+/* ── KPI grid ── */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 30px 0;
+}
+.kpi-card {
+  padding: 20px 18px;
+  background: #f0f4ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 12px;
+  text-align: center;
+}
+.kpi-card .kpi-icon { font-size: 26px; display: block; margin-bottom: 8px; }
+.kpi-card .kpi-title { font-size: 14px; font-weight: 700; color: #0f2b5b; margin-bottom: 5px; }
+.kpi-card .kpi-examples { font-size: 12px; color: #6b7280; line-height: 1.5; }
+
+/* ── design checklist ── */
+.checklist { list-style: none; padding-left: 0; margin: 0 0 22px 0; }
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 18px;
+  color: #374151;
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+.checklist li::before {
+  content: "✓";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ── tip box ── */
+.tip-box {
+  margin: 32px 0;
+  padding: 22px 26px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 12px;
+  font-size: 17px;
+  color: #374151;
+  line-height: 1.7;
+}
+.tip-box strong { color: #92400e; }
+
+/* ── verdict box ── */
+.verdict-box {
+  margin: 40px 0;
+  padding: 28px 32px;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 12px;
+}
+.verdict-box p { margin-bottom: 0; font-size: 18px; color: #1e3a5f; }
+.verdict-box strong { color: #2563eb; }
+
+/* ── audience table ── */
+.aud-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0 10px;
+  font-size: 16px;
+}
+.aud-table thead tr th {
+  padding: 12px 15px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 700;
+  background: #0f2b5b;
+  color: #ffffff;
+  letter-spacing: 0.03em;
+}
+.aud-table thead tr th:first-child { border-radius: 8px 0 0 0; }
+.aud-table thead tr th:last-child  { border-radius: 0 8px 0 0; }
+.aud-table tbody tr td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #374151;
+  vertical-align: top;
+  line-height: 1.6;
+}
+.aud-table tbody tr:nth-child(even) td { background: #f8fafc; }
+.aud-table tbody tr:last-child td { border-bottom: none; }
+.aud-table tbody tr td:first-child { font-weight: 700; color: #0f2b5b; }
+
+/* ── CTA ── */
+.cta-box {
+  margin-top: 30px;
+  padding: 35px;
+  background: #f5f8ff;
+  border: 1px solid #dbe3ee;
+  border-radius: 12px;
+}
+.cta-box h2 { margin-top: 0; }
+.btn {
+  display: inline-block;
+  padding: 14px 22px;
+  background: #2563eb;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: 10px;
+  transition: 0.3s ease;
+}
+.btn:hover { opacity: 0.9; text-decoration: none; }
+
+/* ── related ── */
+.related-articles { margin-top: 50px; }
+.related-articles h2 { margin-top: 0; }
+.related-articles ul { padding-left: 0; list-style: none; }
+.related-articles ul li {
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 17px;
+}
+.related-articles ul li:last-child { border-bottom: none; }
+.related-articles ul li a { font-weight: 600; }
+
+@media (max-width: 768px) {
+  .container { margin: 20px; padding: 30px 20px; }
+  h1 { font-size: 34px; }
+  h2 { font-size: 26px; }
+  h3 { font-size: 20px; }
+  p, ul li { font-size: 17px; }
+  .kpi-grid { grid-template-columns: 1fr 1fr; }
+  .aud-table { font-size: 14px; }
+  .aud-table thead tr th, .aud-table tbody tr td { padding: 10px 11px; }
+  .example-card { padding: 20px 16px; }
+}
+@media (max-width: 480px) {
+  .kpi-grid { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
+<div class="container">
+
+<a href="/" class="back-link">← Back to Qythera</a>
+
 <h1>Sales Dashboard Examples in Power BI</h1>
 
-<p>Content for Sales Dashboard Examples in Power BI will go here.</p>
+<p>
+A well-designed sales dashboard does not just display numbers — it answers the specific questions a sales team asks every day: Are we on track to hit this month's target? Which region is ahead and which is behind? Which products are driving growth and which are stalling? Which reps are converting well and which need support?
+</p>
+<p>
+Power BI is the most widely used platform for building sales dashboards because it connects directly to CRM systems and sales data, refreshes automatically, and produces interactive reports that sales directors, regional managers, and individual reps can all navigate without requiring a data analyst to be present. The challenge is not the platform — it is knowing what a good sales dashboard should actually look like before you start building.
+</p>
+<p>
+In this article, we walk through five real-world sales dashboard examples built in Power BI, covering different audiences and use cases: executive revenue tracking, sales team performance, pipeline health, regional analysis, and product-level sales reporting. For each example, we explain the layout, the KPIs included, and the design decisions that make it genuinely useful rather than just visually impressive.
+</p>
 
+<!-- ── OVERVIEW VISUAL: 5 dashboard types ── -->
+<div class="visual-block">
+<svg viewBox="0 0 840 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+  <rect x="0" y="0" width="840" height="160" rx="12" fill="#f0f4ff"/>
+  <text x="420" y="30" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#0f2b5b">5 Sales Dashboard Types — One for Every Audience</text>
+
+  <!-- card 1 -->
+  <rect x="18" y="44" width="148" height="104" rx="10" fill="#ffffff" stroke="#c7d2fe" stroke-width="1.5"/>
+  <text x="92" y="78" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24">🏆</text>
+  <text x="92" y="100" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" fill="#0f2b5b">Executive</text>
+  <text x="92" y="116" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#6b7280">Revenue vs</text>
+  <text x="92" y="130" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#6b7280">target overview</text>
+
+  <!-- card 2 -->
+  <rect x="182" y="44" width="148" height="104" rx="10" fill="#ffffff" stroke="#c7d2fe" stroke-width="1.5"/>
+  <text x="256" y="78" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24">👥</text>
+  <text x="256" y="100" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" fill="#0f2b5b">Team Performance</text>
+  <text x="256" y="116" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#6b7280">Rep-level KPIs</text>
+  <text x="256" y="130" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#6b7280">and targets</text>
+
+  <!-- card 3 -->
+  <rect x="346" y="44" width="148" height="104" rx="10" fill="#ffffff" stroke="#c7d2fe" stroke-width="1.5"/>
+  <text x="420" y="78" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24">🔭</text>
+  <text x="420" y="100" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" fill="#0f2b5b">Pipeline Health</text>
+  <text x="420" y="116" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#6b7280">Stage-by-stage</text>
+  <text x="420" y="130" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#6b7280">deal visibility</text>
+
+  <!-- card 4 -->
+  <rect x="510" y="44" width="148" height="104" rx="10" fill="#ffffff" stroke="#c7d2fe" stroke-width="1.5"/>
+  <text x="584" y="78" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24">🗺️</text>
+  <text x="584" y="100" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" fill="#0f2b5b">Regional</text>
+  <text x="584" y="116" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#6b7280">Territory and</text>
+  <text x="584" y="130" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#6b7280">region analysis</text>
+
+  <!-- card 5 -->
+  <rect x="674" y="44" width="148" height="104" rx="10" fill="#2563eb" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="748" y="78" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24">📦</text>
+  <text x="748" y="100" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" fill="#ffffff">Product Sales</text>
+  <text x="748" y="116" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#bfdbfe">Category and</text>
+  <text x="748" y="130" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#bfdbfe">SKU performance</text>
+</svg>
+<p class="visual-caption">Five distinct sales dashboard types — each built for a different audience and a different set of decisions.</p>
+</div>
+
+<h2>What Makes a Sales Dashboard in Power BI Effective?</h2>
+<p>
+Before looking at individual examples, it helps to understand what separates a sales dashboard that gets used every day from one that is opened once and then ignored. The answer is almost never the visual quality — it is whether the dashboard answers the right questions for the right audience at the right level of detail.
+</p>
+<p>
+A sales director needs a high-level view of revenue, target attainment, and growth trend. A sales manager needs rep-level performance and pipeline coverage. An individual sales rep needs their own targets, their own pipeline, and their own conversion metrics. Building one dashboard that tries to serve all three audiences equally usually fails all three.
+</p>
+<p>
+The most effective sales dashboards in Power BI use separate report pages for different audiences, with consistent KPI definitions across all of them and interactive slicers that allow filtering by date range, region, product, or sales rep without requiring a separate report to be built for each combination. For a deeper guide on building the technical foundation, read our article on <a href="/blogs/how-to-build-kpi-dashboard-power-bi.html">How to Build a KPI Dashboard in Power BI</a>.
+</p>
+
+<!-- ══════════════════════════════
+     EXAMPLE 1: EXECUTIVE REVENUE
+══════════════════════════════ -->
+<div class="example-label">Example 01 — Executive Revenue Dashboard</div>
+<div class="example-card">
+  <h3>Who It Is Built For</h3>
+  <p>CEOs, MDs, and sales directors who need a daily or weekly consolidated view of revenue performance, target attainment, and growth trend — without needing to dig into individual rep or deal level data.</p>
+  <h3>What It Includes</h3>
+  <ul>
+    <li>Total revenue card — current period vs target and vs same period last year</li>
+    <li>Revenue target attainment gauge — percentage of annual or quarterly target achieved</li>
+    <li>Month-over-month revenue trend line chart — 12-month rolling view</li>
+    <li>Revenue split by business unit, channel, or product category</li>
+    <li>Gross margin summary alongside revenue</li>
+    <li>Date slicer allowing filter by month, quarter, or year</li>
+  </ul>
+</div>
+
+<!-- Executive dashboard SVG mockup -->
+<div class="visual-block">
+<svg viewBox="0 0 840 270" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:12px;">
+  <rect x="0" y="0" width="840" height="270" rx="12" fill="#0f2b5b"/>
+  <rect x="0" y="0" width="840" height="40" rx="12" fill="#0a1f42"/>
+  <rect x="0" y="28" width="840" height="12" fill="#0a1f42"/>
+  <text x="24" y="25" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" fill="#93c5fd">Executive Revenue Dashboard</text>
+  <rect x="700" y="10" width="80" height="20" rx="4" fill="#1e3a6e"/>
+  <text x="740" y="24" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd">FY 2025–26 ▾</text>
+  <rect x="786" y="10" width="42" height="20" rx="4" fill="#2563eb"/>
+  <text x="807" y="24" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#fff">Live</text>
+
+  <!-- 4 KPI cards -->
+  <rect x="16" y="50" width="184" height="72" rx="8" fill="#1e3a6e"/>
+  <text x="28" y="70" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd" font-weight="600">TOTAL REVENUE</text>
+  <text x="28" y="96" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#ffffff">₹2.84 Cr</text>
+  <text x="28" y="112" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#34d399">▲ 17.2% vs last year</text>
+
+  <rect x="208" y="50" width="184" height="72" rx="8" fill="#1e3a6e"/>
+  <text x="220" y="70" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd" font-weight="600">TARGET ATTAINMENT</text>
+  <text x="220" y="96" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#ffffff">84.2%</text>
+  <text x="220" y="112" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#fbbf24">Gap: ₹53.4L to target</text>
+
+  <rect x="400" y="50" width="184" height="72" rx="8" fill="#1e3a6e"/>
+  <text x="412" y="70" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd" font-weight="600">GROSS MARGIN</text>
+  <text x="412" y="96" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#ffffff">38.6%</text>
+  <text x="412" y="112" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#34d399">▲ 1.4% vs last year</text>
+
+  <rect x="592" y="50" width="232" height="72" rx="8" fill="#1e3a6e"/>
+  <text x="604" y="70" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd" font-weight="600">NEW CUSTOMERS</text>
+  <text x="604" y="96" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#ffffff">186</text>
+  <text x="604" y="112" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#34d399">▲ 22 vs same period LY</text>
+
+  <!-- 12-month revenue line chart -->
+  <rect x="16" y="134" width="500" height="120" rx="8" fill="#1e3a6e"/>
+  <text x="28" y="154" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#93c5fd">Monthly Revenue — Rolling 12 Months</text>
+  <polyline points="36,224 76,216 116,220 156,206 196,212 236,196 276,202 316,184 356,190 396,172 436,178 476,158"
+    fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="36,226 76,222 116,218 156,214 196,210 236,206 276,202 316,198 356,194 396,190 436,186 476,182"
+    fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="5,4" stroke-linecap="round"/>
+  <circle cx="476" cy="158" r="4" fill="#2563eb"/>
+  <text x="28" y="248" font-family="Arial,Helvetica,sans-serif" font-size="9" fill="#93c5fd">May</text>
+  <text x="110" y="248" font-family="Arial,Helvetica,sans-serif" font-size="9" fill="#93c5fd">Jul</text>
+  <text x="194" y="248" font-family="Arial,Helvetica,sans-serif" font-size="9" fill="#93c5fd">Sep</text>
+  <text x="278" y="248" font-family="Arial,Helvetica,sans-serif" font-size="9" fill="#93c5fd">Nov</text>
+  <text x="362" y="248" font-family="Arial,Helvetica,sans-serif" font-size="9" fill="#93c5fd">Jan</text>
+  <text x="446" y="248" font-family="Arial,Helvetica,sans-serif" font-size="9" fill="#f59e0b">Mar</text>
+
+  <!-- channel donut -->
+  <rect x="524" y="134" width="300" height="120" rx="8" fill="#1e3a6e"/>
+  <text x="536" y="154" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#93c5fd">Revenue by Channel</text>
+  <circle cx="624" cy="204" r="42" fill="none" stroke="#2563eb" stroke-width="18" stroke-dasharray="158 106" stroke-dashoffset="0"/>
+  <circle cx="624" cy="204" r="42" fill="none" stroke="#f59e0b" stroke-width="18" stroke-dasharray="79 185" stroke-dashoffset="-158"/>
+  <circle cx="624" cy="204" r="42" fill="none" stroke="#34d399" stroke-width="18" stroke-dasharray="27 237" stroke-dashoffset="-237"/>
+  <circle cx="624" cy="204" r="22" fill="#1e3a6e"/>
+  <text x="624" y="208" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" fill="#ffffff">60%</text>
+  <text x="700" y="180" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#ffffff">● Direct  60%</text>
+  <text x="700" y="200" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#ffffff">● Online 30%</text>
+  <text x="700" y="220" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#ffffff">● Partner 10%</text>
+</svg>
+<p class="visual-caption">Example 1 — Executive Revenue Dashboard: headline KPIs, rolling 12-month trend, and channel breakdown on a single page.</p>
+</div>
+
+<!-- ══════════════════════════════
+     EXAMPLE 2: TEAM PERFORMANCE
+══════════════════════════════ -->
+<div class="example-label">Example 02 — Sales Team Performance Dashboard</div>
+<div class="example-card">
+  <h3>Who It Is Built For</h3>
+  <p>Sales managers who need to track individual rep performance, identify who is hitting targets, and spot conversion or activity patterns that need attention or coaching.</p>
+  <h3>What It Includes</h3>
+  <ul>
+    <li>Rep-level revenue, target, and attainment percentage ranked in a table</li>
+    <li>Deals closed per rep — current period vs prior period</li>
+    <li>Conversion rate by rep — leads or quotes to closed orders</li>
+    <li>Average deal size by rep</li>
+    <li>Activity metrics — calls, meetings, proposals sent (where CRM data is available)</li>
+    <li>Rep slicer allowing manager to filter to a single individual's view</li>
+  </ul>
+</div>
+
+<!-- Team performance SVG mockup -->
+<div class="visual-block">
+<svg viewBox="0 0 840 252" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:12px;">
+  <rect x="0" y="0" width="840" height="252" rx="12" fill="#0f2b5b"/>
+  <rect x="0" y="0" width="840" height="40" rx="12" fill="#0a1f42"/>
+  <rect x="0" y="28" width="840" height="12" fill="#0a1f42"/>
+  <text x="24" y="25" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" fill="#93c5fd">Sales Team Performance Dashboard</text>
+  <rect x="760" y="10" width="68" height="20" rx="4" fill="#2563eb"/>
+  <text x="794" y="24" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#fff">This Month</text>
+
+  <!-- rep performance table -->
+  <rect x="16" y="50" width="500" height="188" rx="8" fill="#1e3a6e"/>
+  <text x="28" y="70" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#93c5fd">Rep Performance vs Target</text>
+  <!-- header row -->
+  <rect x="22" y="78" width="488" height="18" rx="3" fill="#0f2b5b"/>
+  <text x="30" y="91" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd">Sales Rep</text>
+  <text x="200" y="91" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd">Revenue</text>
+  <text x="290" y="91" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd">Target</text>
+  <text x="370" y="91" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd">Attainment</text>
+  <text x="460" y="91" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd">Conv%</text>
+  <!-- rows -->
+  <text x="30" y="113" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">Rahul Mehta</text>
+  <text x="200" y="113" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">₹18.4L</text>
+  <text x="290" y="113" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">₹16L</text>
+  <text x="370" y="113" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#34d399">115%</text>
+  <text x="460" y="113" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#34d399">38%</text>
+
+  <text x="30" y="133" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">Priya Nair</text>
+  <text x="200" y="133" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">₹15.2L</text>
+  <text x="290" y="133" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">₹16L</text>
+  <text x="370" y="133" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#fbbf24">95%</text>
+  <text x="460" y="133" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#fbbf24">34%</text>
+
+  <text x="30" y="153" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">Arjun Sharma</text>
+  <text x="200" y="153" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">₹12.8L</text>
+  <text x="290" y="153" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">₹16L</text>
+  <text x="370" y="153" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ef4444">80%</text>
+  <text x="460" y="153" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ef4444">26%</text>
+
+  <text x="30" y="173" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">Sneha Patel</text>
+  <text x="200" y="173" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">₹16.9L</text>
+  <text x="290" y="173" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">₹16L</text>
+  <text x="370" y="173" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#34d399">106%</text>
+  <text x="460" y="173" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#34d399">41%</text>
+
+  <text x="30" y="193" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">Vikram Rao</text>
+  <text x="200" y="193" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">₹10.4L</text>
+  <text x="290" y="193" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">₹16L</text>
+  <text x="370" y="193" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ef4444">65%</text>
+  <text x="460" y="193" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ef4444">22%</text>
+
+  <line x1="22" y1="204" x2="510" y2="204" stroke="#334d77" stroke-width="1"/>
+  <text x="30" y="224" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Team Total</text>
+  <text x="200" y="224" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" fill="#ffffff">₹73.7L</text>
+  <text x="290" y="224" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" fill="#ffffff">₹80L</text>
+  <text x="370" y="224" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" fill="#fbbf24">92%</text>
+
+  <!-- conversion bar chart -->
+  <rect x="524" y="50" width="300" height="188" rx="8" fill="#1e3a6e"/>
+  <text x="536" y="70" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#93c5fd">Avg Deal Size by Rep (₹L)</text>
+  <rect x="540" y="96" width="80" height="16" rx="3" fill="#2563eb"/>
+  <text x="630" y="109" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#ffffff">18.4 — Rahul</text>
+  <rect x="540" y="118" width="66" height="16" rx="3" fill="#2563eb" opacity="0.8"/>
+  <text x="614" y="131" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#ffffff">15.2 — Priya</text>
+  <rect x="540" y="140" width="56" height="16" rx="3" fill="#fbbf24" opacity="0.9"/>
+  <text x="604" y="153" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#ffffff">12.8 — Arjun</text>
+  <rect x="540" y="162" width="74" height="16" rx="3" fill="#2563eb" opacity="0.9"/>
+  <text x="622" y="175" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#ffffff">16.9 — Sneha</text>
+  <rect x="540" y="184" width="46" height="16" rx="3" fill="#ef4444" opacity="0.8"/>
+  <text x="594" y="197" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#ffffff">10.4 — Vikram</text>
+  <text x="536" y="228" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#6b7280">Colour = attainment: blue ≥100%, amber 80–99%, red &lt;80%</text>
+</svg>
+<p class="visual-caption">Example 2 — Sales Team Performance Dashboard: rep-level attainment, conversion rates, and deal size in one view.</p>
+</div>
+
+<!-- ══════════════════════════════
+     EXAMPLE 3: PIPELINE HEALTH
+══════════════════════════════ -->
+<div class="example-label">Example 03 — Sales Pipeline Health Dashboard</div>
+<div class="example-card">
+  <h3>Who It Is Built For</h3>
+  <p>Sales managers and directors who need visibility into the health and coverage of the sales pipeline — not just what has been sold, but what is likely to be sold in the coming weeks and whether there is enough pipeline to hit future targets.</p>
+  <h3>What It Includes</h3>
+  <ul>
+    <li>Total pipeline value by stage — as a funnel or stacked bar chart</li>
+    <li>Pipeline coverage ratio — pipeline value vs monthly or quarterly target</li>
+    <li>Weighted pipeline value using probability by stage</li>
+    <li>Average days in each pipeline stage — identifying stalled deals</li>
+    <li>Deals at risk — overdue follow-up, deals not progressed in 14+ days</li>
+    <li>Closed-won vs closed-lost breakdown with reason codes</li>
+  </ul>
+</div>
+
+<!-- Pipeline SVG mockup -->
+<div class="visual-block">
+<svg viewBox="0 0 840 232" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:12px;">
+  <rect x="0" y="0" width="840" height="232" rx="12" fill="#0f2b5b"/>
+  <rect x="0" y="0" width="840" height="40" rx="12" fill="#0a1f42"/>
+  <rect x="0" y="28" width="840" height="12" fill="#0a1f42"/>
+  <text x="24" y="25" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" fill="#93c5fd">Sales Pipeline Health Dashboard</text>
+  <rect x="760" y="10" width="68" height="20" rx="4" fill="#2563eb"/>
+  <text x="794" y="24" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#fff">This Quarter</text>
+
+  <!-- pipeline funnel stages -->
+  <rect x="16" y="50" width="480" height="168" rx="8" fill="#1e3a6e"/>
+  <text x="28" y="70" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#93c5fd">Pipeline by Stage — Value and Deal Count</text>
+
+  <!-- Prospecting -->
+  <rect x="28" y="82" width="300" height="20" rx="4" fill="#2563eb" opacity="0.4"/>
+  <text x="334" y="97" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#93c5fd">Prospecting — ₹48L (38 deals)</text>
+
+  <!-- Qualified -->
+  <rect x="28" y="108" width="240" height="20" rx="4" fill="#2563eb" opacity="0.6"/>
+  <text x="274" y="123" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#93c5fd">Qualified — ₹36L (24 deals)</text>
+
+  <!-- Proposal -->
+  <rect x="28" y="134" width="180" height="20" rx="4" fill="#2563eb" opacity="0.75"/>
+  <text x="214" y="149" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#93c5fd">Proposal Sent — ₹26L (16 deals)</text>
+
+  <!-- Negotiation -->
+  <rect x="28" y="160" width="120" height="20" rx="4" fill="#f59e0b" opacity="0.9"/>
+  <text x="154" y="175" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#93c5fd">Negotiation — ₹18L (10 deals)</text>
+
+  <!-- Closing -->
+  <rect x="28" y="186" width="70" height="20" rx="4" fill="#34d399"/>
+  <text x="104" y="201" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">Closing — ₹10L (6 deals)</text>
+
+  <!-- pipeline metrics right panel -->
+  <rect x="504" y="50" width="320" height="168" rx="8" fill="#1e3a6e"/>
+  <text x="516" y="70" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#93c5fd">Pipeline Health Metrics</text>
+
+  <text x="516" y="98" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#93c5fd">Total Pipeline Value</text>
+  <text x="800" y="98" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#ffffff">₹1.38 Cr</text>
+
+  <text x="516" y="122" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#93c5fd">Weighted Pipeline</text>
+  <text x="800" y="122" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#ffffff">₹52L</text>
+
+  <text x="516" y="146" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#93c5fd">Coverage Ratio</text>
+  <text x="800" y="146" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#34d399">3.4×</text>
+
+  <text x="516" y="170" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#93c5fd">Deals at Risk</text>
+  <text x="800" y="170" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#fbbf24">8 deals</text>
+
+  <text x="516" y="194" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#93c5fd">Avg Days in Pipe</text>
+  <text x="800" y="194" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#ffffff">34 days</text>
+
+  <text x="516" y="210" font-family="Arial,Helvetica,sans-serif" font-size="9" fill="#6b7280">Coverage ratio = pipeline ÷ quarterly target. Healthy = 3× or above.</text>
+</svg>
+<p class="visual-caption">Example 3 — Pipeline Health Dashboard: funnel stage breakdown, weighted value, coverage ratio, and deals at risk.</p>
+</div>
+
+<!-- ══════════════════════════════
+     EXAMPLE 4: REGIONAL ANALYSIS
+══════════════════════════════ -->
+<div class="example-label">Example 04 — Regional Sales Analysis Dashboard</div>
+<div class="example-card">
+  <h3>Who It Is Built For</h3>
+  <p>Regional sales managers and national sales directors who need to compare performance across territories — identifying which regions are driving growth and which need additional support, resource reallocation, or strategic review.</p>
+  <h3>What It Includes</h3>
+  <ul>
+    <li>Revenue by region — bar chart ranked by performance</li>
+    <li>Target attainment by region — with color-coded status indicators</li>
+    <li>Month-over-month growth rate by region</li>
+    <li>Top customers by region</li>
+    <li>Region slicer to drill into a single territory's detailed view</li>
+    <li>New customer acquisition by region</li>
+  </ul>
+</div>
+
+<!-- ══════════════════════════════
+     EXAMPLE 5: PRODUCT SALES
+══════════════════════════════ -->
+<div class="example-label">Example 05 — Product and Category Sales Dashboard</div>
+<div class="example-card">
+  <h3>Who It Is Built For</h3>
+  <p>Sales teams, product managers, and category managers who need to understand which products and categories are growing, which are declining, and where promotional or pricing interventions may be needed.</p>
+  <h3>What It Includes</h3>
+  <ul>
+    <li>Revenue by product category — ranked bar chart with growth indicator</li>
+    <li>Top 10 and bottom 10 products by revenue or margin</li>
+    <li>Product sales trend — comparing current period to prior period</li>
+    <li>Category contribution to total revenue — donut or waterfall chart</li>
+    <li>Return rate by product — where returns data is available</li>
+    <li>Product slicer and category slicer for drill-down analysis</li>
+  </ul>
+</div>
+
+<!-- Product sales SVG mockup -->
+<div class="visual-block">
+<svg viewBox="0 0 840 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:12px;">
+  <rect x="0" y="0" width="840" height="230" rx="12" fill="#0f2b5b"/>
+  <rect x="0" y="0" width="840" height="40" rx="12" fill="#0a1f42"/>
+  <rect x="0" y="28" width="840" height="12" fill="#0a1f42"/>
+  <text x="24" y="25" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" fill="#93c5fd">Product &amp; Category Sales Dashboard</text>
+  <rect x="740" y="10" width="88" height="20" rx="4" fill="#1e3a6e"/>
+  <text x="784" y="24" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd">All Categories ▾</text>
+
+  <!-- category bar chart -->
+  <rect x="16" y="50" width="380" height="168" rx="8" fill="#1e3a6e"/>
+  <text x="28" y="70" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#93c5fd">Revenue by Category vs Last Period</text>
+  <rect x="28" y="82" width="148" height="16" rx="3" fill="#2563eb"/>
+  <rect x="28" y="82" width="130" height="16" rx="3" fill="none" stroke="#2563eb" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+  <text x="184" y="95" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#34d399">Electronics ▲14%</text>
+
+  <rect x="28" y="104" width="124" height="16" rx="3" fill="#2563eb" opacity="0.8"/>
+  <text x="160" y="117" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#34d399">Apparel ▲8%</text>
+
+  <rect x="28" y="126" width="108" height="16" rx="3" fill="#2563eb" opacity="0.7"/>
+  <text x="144" y="139" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#fbbf24">Footwear ▲2%</text>
+
+  <rect x="28" y="148" width="86" height="16" rx="3" fill="#fbbf24" opacity="0.8"/>
+  <text x="122" y="161" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#fbbf24">Accessories ▼3%</text>
+
+  <rect x="28" y="170" width="60" height="16" rx="3" fill="#ef4444" opacity="0.7"/>
+  <text x="96" y="183" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#ef4444">Home &amp; Living ▼11%</text>
+
+  <!-- top products table -->
+  <rect x="404" y="50" width="420" height="168" rx="8" fill="#1e3a6e"/>
+  <text x="416" y="70" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#93c5fd">Top 5 Products This Month</text>
+  <rect x="410" y="78" width="408" height="16" rx="3" fill="#0f2b5b"/>
+  <text x="420" y="91" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd">Product</text>
+  <text x="620" y="91" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd">Revenue</text>
+  <text x="720" y="91" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#93c5fd">vs LM</text>
+  <text x="420" y="112" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#cbd5e1">Samsung QLED 55"</text>
+  <text x="620" y="112" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">₹12.4L</text>
+  <text x="720" y="112" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#34d399">+18%</text>
+  <text x="420" y="132" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#cbd5e1">Nike Air Max 270</text>
+  <text x="620" y="132" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">₹9.8L</text>
+  <text x="720" y="132" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#34d399">+11%</text>
+  <text x="420" y="152" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#cbd5e1">Levi's 511 Slim</text>
+  <text x="620" y="152" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">₹8.2L</text>
+  <text x="720" y="152" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#fbbf24">+2%</text>
+  <text x="420" y="172" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#cbd5e1">Apple AirPods Pro</text>
+  <text x="620" y="172" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">₹7.6L</text>
+  <text x="720" y="172" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#34d399">+22%</text>
+  <text x="420" y="192" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#cbd5e1">Wildcraft Backpack</text>
+  <text x="620" y="192" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffffff">₹4.9L</text>
+  <text x="720" y="192" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ef4444">-8%</text>
+</svg>
+<p class="visual-caption">Example 5 — Product &amp; Category Sales Dashboard: category performance with growth indicators and top product ranking.</p>
+</div>
+
+<h2>Key KPIs Across All Sales Dashboard Examples</h2>
+<div class="kpi-grid">
+  <div class="kpi-card">
+    <span class="kpi-icon">💰</span>
+    <div class="kpi-title">Revenue vs Target</div>
+    <div class="kpi-examples">Absolute and % attainment by period</div>
+  </div>
+  <div class="kpi-card">
+    <span class="kpi-icon">📈</span>
+    <div class="kpi-title">Sales Growth Rate</div>
+    <div class="kpi-examples">MoM and YoY percentage change</div>
+  </div>
+  <div class="kpi-card">
+    <span class="kpi-icon">🎯</span>
+    <div class="kpi-title">Conversion Rate</div>
+    <div class="kpi-examples">Leads or quotes to closed orders</div>
+  </div>
+  <div class="kpi-card">
+    <span class="kpi-icon">🧾</span>
+    <div class="kpi-title">Average Deal Size</div>
+    <div class="kpi-examples">Revenue per closed opportunity</div>
+  </div>
+  <div class="kpi-card">
+    <span class="kpi-icon">🔭</span>
+    <div class="kpi-title">Pipeline Coverage</div>
+    <div class="kpi-examples">Pipeline value ÷ period target</div>
+  </div>
+  <div class="kpi-card">
+    <span class="kpi-icon">📦</span>
+    <div class="kpi-title">Product Contribution</div>
+    <div class="kpi-examples">Revenue and margin by category</div>
+  </div>
+</div>
+<p>
+For a full breakdown of these and other essential business metrics, read our guide on the <a href="/blogs/top-15-kpis-business-dashboard.html">Top 15 KPIs Every Business Dashboard Should Track</a>.
+</p>
+
+<h2>Choosing the Right Layout for Your Audience</h2>
+<table class="aud-table">
+  <thead>
+    <tr>
+      <th>Audience</th>
+      <th>Dashboard Type</th>
+      <th>Update Frequency</th>
+      <th>Primary KPIs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CEO / MD</td>
+      <td>Executive Revenue Dashboard</td>
+      <td>Daily or weekly</td>
+      <td>Revenue, margin, target attainment</td>
+    </tr>
+    <tr>
+      <td>Sales Director</td>
+      <td>Executive + Regional</td>
+      <td>Daily</td>
+      <td>Revenue, growth, regional comparison</td>
+    </tr>
+    <tr>
+      <td>Sales Manager</td>
+      <td>Team Performance + Pipeline</td>
+      <td>Daily</td>
+      <td>Rep attainment, pipeline coverage, deals at risk</td>
+    </tr>
+    <tr>
+      <td>Sales Rep</td>
+      <td>Individual performance view</td>
+      <td>Daily</td>
+      <td>Personal target, pipeline, conversion rate</td>
+    </tr>
+    <tr>
+      <td>Product / Category Manager</td>
+      <td>Product Sales Dashboard</td>
+      <td>Weekly</td>
+      <td>Category revenue, growth, top SKUs</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Design Principles That Appear in Every Effective Sales Dashboard</h2>
+<ul class="checklist">
+  <li>Headline KPI cards at the top — revenue, target, attainment — always visible without scrolling</li>
+  <li>Green for above target, amber for within 10% below, red for significantly below — consistent across all pages</li>
+  <li>Prior period comparison on every metric — no number shown in isolation without context</li>
+  <li>Date slicer accessible from every page — so any stakeholder can adjust the time period themselves</li>
+  <li>Drill-through pages linked from summary views — so detail is available without cluttering the top-level view</li>
+  <li>Mobile-optimised layout published alongside the desktop view — for sales reps checking performance on the move</li>
+</ul>
+
+<div class="tip-box">
+  <strong>Design tip:</strong> Avoid building a sales dashboard that tries to answer every possible question on one page. The best sales dashboards are structured so that a manager can answer their most urgent question — are we on track? — in under ten seconds, and then drill deeper only when the headline figure raises a question that needs investigation. Structure drives adoption far more than visual design alone.
+</div>
+
+<div class="verdict-box">
+  <p>
+    <strong>The most effective sales dashboards in Power BI are not the most visually elaborate ones — they are the ones that answer the right question for the right person at the right level of detail.</strong> Starting with a clear understanding of who will use the dashboard and what decision they need to make is always more important than starting with a visual template and filling it with every available metric.
+  </p>
+</div>
+
+<h2>Conclusion</h2>
+<p>
+A well-built Power BI sales dashboard gives every level of a sales organization exactly the visibility it needs — executives see revenue and target attainment at a glance, managers see team performance and pipeline health in detail, and reps see their own targets and conversion metrics without needing to wait for a weekly email from the reporting team.
+</p>
+<p>
+The five examples in this article represent the most common and highest-value sales dashboard configurations for growing businesses. Each can be built in Power BI using a well-structured data model connected to your CRM, ERP, or sales data, with automated refresh so the numbers are always current. For a step-by-step guide to building the technical foundation that powers these dashboards, read our article on <a href="/blogs/how-to-build-kpi-dashboard-power-bi.html">How to Build a KPI Dashboard in Power BI</a>.
+</p>
+<p>
+For businesses whose sales reporting needs have unique characteristics that do not fit a generic template, read our guide on <a href="/blogs/custom-dashboard-development-services-explained.html">Custom Dashboard Development Services Explained</a> to understand when and how a fully tailored build delivers more value than a pre-configured template.
+</p>
+
+<hr>
+
+<div class="related-articles">
+  <h2>Related Articles</h2>
+  <ul>
+    <li><a href="/blogs/how-to-build-kpi-dashboard-power-bi.html">How to Build a KPI Dashboard in Power BI</a></li>
+    <li><a href="/blogs/top-15-kpis-business-dashboard.html">Top 15 KPIs Every Business Dashboard Should Track</a></li>
+    <li><a href="/blogs/custom-dashboard-development-services-explained.html">Custom Dashboard Development Services Explained</a></li>
+    <li><a href="/blogs/power-bi-vs-excel-business-reporting.html">Power BI vs Excel for Business Reporting: Which Is Better?</a></li>
+    <li><a href="/blogs/reporting-automation-best-practices.html">Reporting Automation Best Practices for Growing Businesses</a></li>
+    <li><a href="/blogs/power-bi-dashboard-services-retail.html">Power BI Dashboard Services for Retail Businesses</a></li>
+    <li><a href="/blogs/power-bi-dashboard-services-manufacturing.html">Power BI Dashboard Services for Manufacturing Companies</a></li>
+  </ul>
+</div>
+
+<hr>
+
+<div class="cta-box">
+  <h2>Need a Sales Dashboard Built for Your Team?</h2>
+  <p>
+    Qythera designs and builds custom Power BI sales dashboards for growing businesses — from executive revenue overviews to rep-level performance tracking and pipeline visibility. We connect your CRM, ERP, or sales data and deliver a live, automated dashboard your team will use every day.
+  </p>
+  <a class="btn" href="/sales-dashboard-development.html">Explore Sales Dashboard Development</a>
+</div>
+
+</div>
 </body>
 </html>
